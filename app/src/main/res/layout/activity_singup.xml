@@ -51,7 +51,7 @@
             android:layout_width="400dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:hint="Tên đăng nhập"
+            android:hint="Mật khẩu"
             android:paddingStart="20dp"
             android:background="@drawable/khung"
             />
@@ -64,7 +64,7 @@
             android:layout_width="400dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:hint="Tên đăng nhập"
+            android:hint="Xác nhận mật khẩu"
             android:paddingStart="20dp"
             android:background="@drawable/khung"
             />
