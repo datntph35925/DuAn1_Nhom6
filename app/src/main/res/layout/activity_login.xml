@@ -70,8 +70,8 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:hint="Tên đăng nhập"
-            android:paddingStart="20dp"/>
-<!--            android:background="@drawable/khung"-->
+            android:paddingStart="20dp"
+            android:background="@drawable/khung"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -84,8 +84,8 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:hint="Mật Khẩu"
-            android:paddingStart="20dp"/>
-<!--            android:background="@drawable/khung"-->
+            android:paddingStart="20dp"
+            android:background="@drawable/khung"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
