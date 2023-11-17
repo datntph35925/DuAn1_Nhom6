@@ -1,4 +1,4 @@
-package com.example.duan1_nhom6;
+package com.example.duan1_nhom6.Views;
 
 import android.os.Bundle;
 
