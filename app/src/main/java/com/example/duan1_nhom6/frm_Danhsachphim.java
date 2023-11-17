@@ -1,0 +1,15 @@
+package com.example.duan1_nhom6;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+
+public class frm_Danhsachphim extends Fragment {
+
+
+}
