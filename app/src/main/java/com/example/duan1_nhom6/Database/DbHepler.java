@@ -4,13 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
-
-public class DbHeple extends SQLiteOpenHelper {
+public class DbHepler extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "DuAn1";
-    public DbHeple( Context context) {
-        super(context, DB_NAME, null, 1);
+    public DbHepler(Context context) {
+        super(context, DB_NAME, null, 3);
     }
 
     @Override
@@ -27,13 +25,13 @@ public class DbHeple extends SQLiteOpenHelper {
         String admin = "insert into admin values('admin1','1','Ngô Thành Đạt')," + "('admin2','1','Nguyễn Đăng Sao')";
         sqLiteDatabase.execSQL(admin);
 
-        String khachhang = "insert into khachhang values('khachang1','123','Khuất Thị Ngọc Anh')," + "('khachhang2','111','Nguyễn Đăng Sao')";
+        String khachhang = "insert into khachhang values('khachhang1','123','Khuất Thị Ngọc Anh')," + "('khachhang2','111','Nguyễn Đăng Sao')";
         sqLiteDatabase.execSQL(khachhang);
 
         String phim = "insert into phim values(1,'100 Days','Khuất Thị Ngọc Anh',133,'Hành động','Cuộc Đối Đầu Nảy Lửa: Nhóm Siêu Năng Lực Chiến Đấu Để Bảo Vệ Thế Giới Khỏi Hiểm Họa Toàn Cầu.')," +
                                                 "(2,'Gấu Đỏ Biến Hình','Nguyễn Đăng Sao',200,'Hoạt Hình','Phiêu Lưu Hài Hước: Nhóm Bạn Siêu Nhỏ Tìm Kiếm Kỳ Diệu Ẩn Trong Thế Giới Ngầm.')";
         sqLiteDatabase.execSQL(phim);
-        sqLiteDatabase.execSQL(khachhang);
+
     }
 
     @Override
