@@ -19,7 +19,7 @@
 
 
     <Button
-        android:id="@+id/btnDN_Facebook"
+        android:id="@+id/btnDN_facebook"
         android:layout_width="400dp"
         android:layout_height="60dp"
         android:layout_marginTop="50px"
