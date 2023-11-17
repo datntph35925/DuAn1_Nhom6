@@ -1,6 +1,7 @@
 package com.example.duan1_nhom6.DAO;
 // KhachHangDAO là để lấy và thao tác dữ liệu từ database
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,5 +26,32 @@ public class KhachHangDAO {
         //Để kiểm tra được thông tin ta sử dụng con trỏ (cursor)
         Cursor cursor = database.rawQuery("select * from khachhang where tendangnhap = ? and matkhau = ? " , new String[]{tendangnhap,matkhau});
         return (cursor.getCount() > 0);
+    }
+
+    //singup
+
+    public boolean singup(String tendangnhap, String matkhau, String hoten){
+        SQLiteDatabase database = dbHepler.getWritableDatabase(); //ghi dữ liệu vào database
+        ContentValues values =new ContentValues();
+        values.put("tendangnhap", tendangnhap);
+        values.put("matkhau", matkhau);
+        values.put("hoten", hoten);
+
+        long row = database.insert("khachhang",null,values);
+        return (row > 0);
+
+    }
+
+    //forgot
+    public String forgot(String tendangnhap){
+        SQLiteDatabase database = dbHepler.getReadableDatabase();
+        Cursor cursor = database.rawQuery("select matkhau from khachhang where tendangnhap = ?", new String[]{tendangnhap});
+
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }else {
+            return "";
+        }
     }
 }

@@ -1,9 +1,11 @@
 package com.example.duan1_nhom6.Views;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,6 +53,50 @@ public class Login extends AppCompatActivity {
                 }else {
                     Toast.makeText(Login.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        txt_dangky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this , Singup.class));
+            }
+        });
+
+        txt_quenmatkhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDiaglog_quenmk();
+            }
+        });
+    }
+
+    private void showDiaglog_quenmk(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.diaglog_quenmatkhau, null);
+        builder.setView(view);
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.setCancelable(false);
+        //ánh xạ
+        EditText edtTendangnhap = view.findViewById(R.id.edt_tendangnhap);
+        Button btnGui = view.findViewById(R.id.btn_guimk);
+        Button btnHuy = view.findViewById(R.id.btn_huy);
+
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        btnGui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tendangnhap = edtTendangnhap.getText().toString();
+                String matkhau = khachHangDAO.forgot(tendangnhap);
+                Toast.makeText(Login.this, matkhau, Toast.LENGTH_SHORT).show();
             }
         });
     }
