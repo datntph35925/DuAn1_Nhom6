@@ -3,21 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
     android:gravity="center"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="15dp">
+        app:cardCornerRadius="10dp"
+
+
+        >
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="390dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:orientation="horizontal"
+            android:background="@drawable/vienphim"
+            android:layout_gravity="center"
             android:padding="10dp">
 
             <ImageView
