@@ -2,6 +2,8 @@ package com.example.duan1_nhom6.Views;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -49,7 +51,7 @@ public class Login extends AppCompatActivity {
                 boolean check = khachHangDAO.checklogin(tendangnhap,matkhau);
                 if (check){
                     Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, frm_Danhsachphim.class));
+                    startActivity(new Intent(Login.this, Home.class));
                 }else {
                     Toast.makeText(Login.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }

@@ -1,4 +1,4 @@
-package com.example.duan1_nhom6.Views;
+package com.example.duan1_nhom6.Fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
