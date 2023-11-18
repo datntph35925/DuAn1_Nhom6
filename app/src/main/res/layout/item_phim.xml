@@ -125,14 +125,6 @@
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"/>
                 </LinearLayout>
-
-
-
-
-
-
-
-
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
