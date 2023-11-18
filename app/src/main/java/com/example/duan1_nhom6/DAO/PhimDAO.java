@@ -30,10 +30,10 @@ public class PhimDAO {
                 while (!cursor.isAfterLast()){
                     PhimModel pm = new PhimModel();
                     pm.setMaphim(cursor.getInt(0));
-                    pm.setTenphim(cursor.getString(0));
-                    pm.setDaodien(cursor.getString(0));
-                    pm.setThoiluong(cursor.getInt(0));
-                    pm.setTheloai(cursor.getString(0));
+                    pm.setTenphim(cursor.getString(1));
+                    pm.setDaodien(cursor.getString(2));
+                    pm.setThoiluong(cursor.getInt(3));
+                    pm.setTheloai(cursor.getString(4));
 
                     list.add(pm);
                     cursor.moveToNext();
