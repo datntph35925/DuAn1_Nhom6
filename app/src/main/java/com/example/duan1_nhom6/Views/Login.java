@@ -49,7 +49,7 @@ public class Login extends AppCompatActivity {
                 boolean check = khachHangDAO.checklogin(tendangnhap,matkhau);
                 if (check){
                     Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, MainActivity.class));
+                    startActivity(new Intent(Login.this, frm_Danhsachphim.class));
                 }else {
                     Toast.makeText(Login.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
