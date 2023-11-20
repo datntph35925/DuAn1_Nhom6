@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="20dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="THÊM SẢN PHẨM"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:textColor="#3F51B5"
+        android:layout_marginTop="50sp"
+        />
+
+    <EditText
+        android:id="@+id/edTen_ad"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập tên phim: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black"
+
+        />
+
+    <EditText
+        android:id="@+id/edDaodien_ad"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập  đạo diễn: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edThoiluong_ad"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập thời lượng: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black" />
+    <EditText
+        android:id="@+id/edTheloai_ad"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập thể loại: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black" />
+    <Button
+        android:id="@+id/btnAdd_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm"
+
+        android:layout_gravity="center"
+        android:backgroundTint="#0098FF"
+        />
+</LinearLayout>

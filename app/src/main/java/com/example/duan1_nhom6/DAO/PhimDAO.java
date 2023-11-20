@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.nfc.Tag;
 import android.util.Log;
 
 import com.example.duan1_nhom6.Database.DbHepler;
@@ -58,7 +57,17 @@ public class PhimDAO {
         long row = db.insert("phim",null,values);
         return (row >0);
    }
+    public boolean update(PhimModel pm){
+        SQLiteDatabase db = dbHepler.getWritableDatabase();
+        ContentValues values     = new ContentValues();
+        values.put("tenphim", pm.getTenphim());
+        values.put("daodien",pm.getDaodien());
+        values.put("thoiluong",pm.getThoiluong());
+        values.put("theloai",pm.getTheloai());
 
+        long row = db.update("phim",values, "maphim=?",new String[]{String.valueOf(pm.getMaphim())});
+        return (row > 0);
+    }
 
    public boolean delete (int maphim){
         SQLiteDatabase db = dbHepler.getWritableDatabase();

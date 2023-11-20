@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 public class frm_Danhsachphim extends Fragment {
     RecyclerView rccDS;
+    FloatingActionButton fltAdd;
     PhimAdapter adapter;
     PhimDAO phimDAO;
     Context context;
@@ -49,6 +50,7 @@ public class frm_Danhsachphim extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rccDS = view.findViewById(R.id.rccDS);
+        fltAdd = view.findViewById(R.id.btnAdd);
         context = getContext();
         phimDAO = new PhimDAO(context);
         list = phimDAO.selectAll();
@@ -58,5 +60,51 @@ public class frm_Danhsachphim extends Fragment {
 
         adapter = new PhimAdapter(context, list);
         rccDS.setAdapter(adapter);
+
+        fltAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {openDialogAdd();
+            }
+        });
     }
+    public void openDialogAdd(){
+        context = getContext();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_add,null);
+        builder.setView(view);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        EditText edTen_ad = view.findViewById(R.id.edTen_ad);
+        EditText edDaodien_ad = view.findViewById(R.id.edDaodien_ad);
+        EditText edThoiluong_ad = view.findViewById(R.id.edThoiluong_ad);
+        EditText edTheloai_ad = view.findViewById(R.id.edTheloai_ad);
+        Button btnUpdate_ad = view.findViewById(R.id.btnAdd_ad);
+
+        btnUpdate_ad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tenphim = edTen_ad.getText().toString();
+                String daodien = edDaodien_ad.getText().toString();
+                int thoiluong = Integer.parseInt(edThoiluong_ad.getText().toString());
+                String theloai = edTheloai_ad.getText().toString();
+
+                PhimModel phimModel = new PhimModel(tenphim,daodien,thoiluong,theloai);
+
+                if (phimDAO.insert(phimModel)){
+                    list.clear();
+                    list.addAll(phimDAO.selectAll());
+                    adapter.notifyDataSetChanged();
+                    dialog.dismiss();
+                Toast.makeText(context, "Insert succ", Toast.LENGTH_SHORT).show();
+            }
+                else {
+                    Toast.makeText(context, "Insert fail", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="20dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50sp"
+        android:text="Cập Nhật Phim"
+        android:textColor="#3F51B5"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edTen_ud"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập tên phim: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black"
+
+        />
+
+    <EditText
+        android:id="@+id/edDaodien_ud"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập  đạo diễn: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edThoiluong_ud"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập thời lượng: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black" />
+    <EditText
+        android:id="@+id/edTheloai_ud"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bgbtn"
+        android:hint="Nhập thể loại: "
+        android:paddingLeft="20sp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btnUpdate_ud"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0098FF"
+        android:text="Cập Nhật"
+        android:textColor="@color/white"
+        />
+</LinearLayout>
