@@ -33,6 +33,7 @@ public class PhimDAO {
                     pm.setDaodien(cursor.getString(2));
                     pm.setThoiluong(cursor.getInt(3));
                     pm.setTheloai(cursor.getString(4));
+                    pm.setMota(cursor.getString(5));
 
                     list.add(pm);
                     cursor.moveToNext();
@@ -53,6 +54,8 @@ public class PhimDAO {
         values.put("daodien",pm.getDaodien());
         values.put("thoiluong",pm.getThoiluong());
         values.put("theloai",pm.getTheloai());
+        values.put("mota",pm.getMota());
+
 
         long row = db.insert("phim",null,values);
         return (row >0);
@@ -89,6 +92,7 @@ public class PhimDAO {
                     pm.setDaodien(cursor.getString(2));
                     pm.setThoiluong(cursor.getInt(3));
                     pm.setTheloai(cursor.getString(4));
+                    pm.setMota(cursor.getString(5));
 
                     phimModel = pm;
                     cursor.moveToNext();

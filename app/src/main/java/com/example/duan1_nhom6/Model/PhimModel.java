@@ -20,11 +20,12 @@ public class PhimModel {
         this.mota = mota;
     }
 
-    public PhimModel(String tenphim, String daodien, int thoiluong, String theloai) {
+    public PhimModel(String tenphim, String daodien, int thoiluong, String theloai, String mota) {
         this.tenphim = tenphim;
         this.daodien = daodien;
         this.thoiluong = thoiluong;
         this.theloai = theloai;
+        this.mota = mota;
     }
 
     public int getMaphim() {

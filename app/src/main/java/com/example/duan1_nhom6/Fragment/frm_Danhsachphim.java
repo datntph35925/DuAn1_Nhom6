@@ -81,6 +81,7 @@ public class frm_Danhsachphim extends Fragment {
         EditText edDaodien_ad = view.findViewById(R.id.edDaodien_ad);
         EditText edThoiluong_ad = view.findViewById(R.id.edThoiluong_ad);
         EditText edTheloai_ad = view.findViewById(R.id.edTheloai_ad);
+        EditText edMota_ad = view.findViewById(R.id.edMota_ad);
         Button btnUpdate_ad = view.findViewById(R.id.btnAdd_ad);
 
         btnUpdate_ad.setOnClickListener(new View.OnClickListener() {
@@ -90,8 +91,9 @@ public class frm_Danhsachphim extends Fragment {
                 String daodien = edDaodien_ad.getText().toString();
                 int thoiluong = Integer.parseInt(edThoiluong_ad.getText().toString());
                 String theloai = edTheloai_ad.getText().toString();
+                String mota = edMota_ad.getText().toString();
 
-                PhimModel phimModel = new PhimModel(tenphim,daodien,thoiluong,theloai);
+                PhimModel phimModel = new PhimModel(tenphim,daodien,thoiluong,theloai,mota);
 
                 if (phimDAO.insert(phimModel)){
                     list.clear();
