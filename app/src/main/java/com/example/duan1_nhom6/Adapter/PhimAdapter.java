@@ -3,6 +3,7 @@ package com.example.duan1_nhom6.Adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan1_nhom6.DAO.PhimDAO;
 import com.example.duan1_nhom6.Model.PhimModel;
 import com.example.duan1_nhom6.R;
+import com.example.duan1_nhom6.chitietphim;
 
 import java.util.ArrayList;
 
@@ -87,6 +89,15 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
             // show Dialog
             AlertDialog dialog = builder.create();
             dialog.show();
+        }
+    });
+
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, chitietphim.class);
+            intent.putExtra("id",list.get(holder.getAdapterPosition()).getMaphim());
+            context.startActivity(intent);
         }
     });
     holder.btnUpdate.setOnClickListener(new View.OnClickListener() {

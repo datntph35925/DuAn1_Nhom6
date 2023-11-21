@@ -74,4 +74,30 @@ public class PhimDAO {
         long row = db.delete("phim","maphim=?",new String[] {String.valueOf(maphim)});
         return (row > 0);
    }
+
+    public PhimModel selectid (int id){
+        PhimModel phimModel = new PhimModel();
+        SQLiteDatabase db = dbHepler.getReadableDatabase();
+        try{
+            Cursor cursor = db.rawQuery("select * from phim where maphim=?",new String[]{String.valueOf(id)});
+            if (cursor.getCount()>0){
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()){
+                    PhimModel pm = new PhimModel();
+                    pm.setMaphim(cursor.getInt(0));
+                    pm.setTenphim(cursor.getString(1));
+                    pm.setDaodien(cursor.getString(2));
+                    pm.setThoiluong(cursor.getInt(3));
+                    pm.setTheloai(cursor.getString(4));
+
+                    phimModel = pm;
+                    cursor.moveToNext();
+                }
+            }
+        }
+        catch (Exception e){
+            Log.i(TAG, "Lỗi",e);
+        }
+        return phimModel;
+    }
 }
