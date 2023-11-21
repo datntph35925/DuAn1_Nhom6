@@ -27,20 +27,6 @@ public class AdminDAO {
         return (cursor.getCount() > 0);
     }
 
-    //singup
-
-    public boolean singup(String tendangnhap, String matkhau, String hoten){
-        SQLiteDatabase database = dbHepler.getWritableDatabase(); //ghi dữ liệu vào database
-        ContentValues values =new ContentValues();
-        values.put("tendangnhap", tendangnhap);
-        values.put("matkhau", matkhau);
-        values.put("hoten", hoten);
-
-        long row = database.insert("admin",null,values);
-        return (row > 0);
-
-    }
-
     //forgot
     public String forgot(String tendangnhap){
         SQLiteDatabase database = dbHepler.getReadableDatabase();
