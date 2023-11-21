@@ -16,7 +16,7 @@
             android:name=".Views.LoginAdmin"
             android:exported="false" />
         <activity
-            android:name=".chitietphim"
+            android:name=".Views.ChiTietPhim"
             android:exported="false" />
         <activity
             android:name=".Views.Home"

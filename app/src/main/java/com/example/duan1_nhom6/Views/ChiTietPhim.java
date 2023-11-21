@@ -1,4 +1,4 @@
-package com.example.duan1_nhom6;
+package com.example.duan1_nhom6.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,9 @@ import android.widget.TextView;
 
 import com.example.duan1_nhom6.DAO.PhimDAO;
 import com.example.duan1_nhom6.Model.PhimModel;
+import com.example.duan1_nhom6.R;
 
-public class chitietphim extends AppCompatActivity {
+public class ChiTietPhim extends AppCompatActivity {
         int maphim;
 
     @Override

@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan1_nhom6.DAO.PhimDAO;
 import com.example.duan1_nhom6.Model.PhimModel;
 import com.example.duan1_nhom6.R;
-import com.example.duan1_nhom6.chitietphim;
+import com.example.duan1_nhom6.Views.ChiTietPhim;
 
 import java.util.ArrayList;
 
@@ -95,7 +95,7 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
     holder.itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(context, chitietphim.class);
+            Intent intent = new Intent(context, ChiTietPhim.class);
             intent.putExtra("id",list.get(holder.getAdapterPosition()).getMaphim());
             context.startActivity(intent);
         }
