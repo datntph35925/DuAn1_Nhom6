@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="30dp"
+    android:gravity="center"
+    tools:context=".Views.LoginAdmin">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edDN_tenDN_AD"
+            android:layout_width="400dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:hint="Tên đăng nhập"
+            android:paddingStart="20dp"
+            android:background="@drawable/khung"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edDN_matkhau_AD"
+            android:layout_width="400dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:hint="Mật Khẩu"
+            android:paddingStart="20dp"
+            android:background="@drawable/khung"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tvQuenmatkhau_AD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quên mật khẩu?"
+        android:layout_marginTop="30px"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="right"
+        android:textColor="@color/black"
+        android:textSize="20dp"/>
+    <Button
+        android:id="@+id/btnDangnhap_AD"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Đăng Nhập"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:background="@drawable/khungbuton"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>

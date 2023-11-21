@@ -2,8 +2,6 @@ package com.example.duan1_nhom6.Views;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,61 +12,42 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.duan1_nhom6.DAO.AdminDAO;
 import com.example.duan1_nhom6.DAO.KhachHangDAO;
-import com.example.duan1_nhom6.MainActivity;
 import com.example.duan1_nhom6.R;
 
-public class Login extends AppCompatActivity {
+public class LoginAdmin extends AppCompatActivity {
+    private AdminDAO adminDAO;
 
-    private KhachHangDAO khachHangDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_admin);
 
-        //ánh xạ
-        Button btnlg_fb = findViewById(R.id.btnDN_facebook);
-        Button btnlg_gg = findViewById(R.id.btnDN_google);
-        Button btnlg_admin = findViewById(R.id.btnDN_admin);
-        Button btn_dangnhap = findViewById(R.id.btnDangnhap);
-        EditText edt_tendangnhap = findViewById(R.id.edDN_tenDN);
-        EditText edt_matkhau = findViewById(R.id.edDN_matkhau);
-        TextView txt_quenmatkhau = findViewById(R.id.tvQuenmatkhau);
-        TextView txt_dangky = findViewById(R.id.tvDangky);
+        EditText edt_tendangnhap = findViewById(R.id.edDN_tenDN_AD);
+        EditText edt_matkhau = findViewById(R.id.edDN_matkhau_AD);
+        TextView txt_quenmatkhau = findViewById(R.id.tvQuenmatkhau_AD);
+        Button btn_dangnhap = findViewById(R.id.btnDangnhap_AD);
 
-        khachHangDAO = new KhachHangDAO(this);
+        adminDAO  = new AdminDAO(this);
 
-        //Chức năng đâng nhập
+
         btn_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String tendangnhap =edt_tendangnhap.getText().toString();
                 String matkhau =edt_matkhau.getText().toString();
                 if (matkhau.equals("") || tendangnhap.equals("")){
-                    Toast.makeText(Login.this, "Không được để trống Tên đăng nhập và Mật khẩu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginAdmin.this, "Không được để trống Tên đăng nhập và Mật khẩu", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                boolean check = khachHangDAO.checklogin(tendangnhap,matkhau);
+                boolean check = adminDAO.checkloginadmin(tendangnhap,matkhau);
                 if (check){
-                    Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, Home.class));
+                    Toast.makeText(LoginAdmin.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginAdmin.this, Home.class));
                 }else {
-                    Toast.makeText(Login.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginAdmin.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        btnlg_admin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Login.this , LoginAdmin.class));
-            }
-        });
-
-        txt_dangky.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Login.this , Singup.class));
             }
         });
 
@@ -79,7 +58,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
     private void showDiaglog_quenmk(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -104,8 +82,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String tendangnhap = edtTendangnhap.getText().toString();
-                String matkhau = khachHangDAO.forgot(tendangnhap);
-                Toast.makeText(Login.this, matkhau, Toast.LENGTH_SHORT).show();
+                String matkhau = adminDAO.forgot(tendangnhap);
+                Toast.makeText(LoginAdmin.this, matkhau, Toast.LENGTH_SHORT).show();
             }
         });
     }
