@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1_nhom6.Adapter.PhimAdapter;
@@ -82,9 +84,10 @@ public class frm_Danhsachphim extends Fragment {
         EditText edThoiluong_ad = view.findViewById(R.id.edThoiluong_ad);
         EditText edTheloai_ad = view.findViewById(R.id.edTheloai_ad);
         EditText edMota_ad = view.findViewById(R.id.edMota_ad);
-        Button btnUpdate_ad = view.findViewById(R.id.btnAdd_ad);
+        EditText Poster_ad = view.findViewById(R.id.Poster_ad);
+        Button btnAdd_ad = view.findViewById(R.id.btnAdd_ad);
 
-        btnUpdate_ad.setOnClickListener(new View.OnClickListener() {
+        btnAdd_ad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String tenphim = edTen_ad.getText().toString();
@@ -92,8 +95,9 @@ public class frm_Danhsachphim extends Fragment {
                 int thoiluong = Integer.parseInt(edThoiluong_ad.getText().toString());
                 String theloai = edTheloai_ad.getText().toString();
                 String mota = edMota_ad.getText().toString();
+                String linkanh = Poster_ad.getText().toString();
 
-                PhimModel phimModel = new PhimModel(tenphim,daodien,thoiluong,theloai,mota);
+                PhimModel phimModel = new PhimModel(tenphim,daodien,thoiluong,theloai,mota,linkanh);
 
                 if (phimDAO.insert(phimModel)){
                     list.clear();

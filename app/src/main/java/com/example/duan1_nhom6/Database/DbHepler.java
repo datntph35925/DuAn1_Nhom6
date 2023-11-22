@@ -8,7 +8,7 @@ public class DbHepler extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "DuAn1";
     public DbHepler(Context context) {
-        super(context, DB_NAME, null, 3);
+        super(context, DB_NAME, null, 30);
     }
 
     @Override
@@ -16,7 +16,7 @@ public class DbHepler extends SQLiteOpenHelper {
         String tb_khachhang = "Create table khachhang (tendangnhap text primary key , matkhau text , hoten text )";
         sqLiteDatabase.execSQL(tb_khachhang);
 
-        String tb_phim = "Create table phim (maphim integer primary key autoincrement, tenphim text , daodien text , thoiluong integer , theloai text , mota text)";
+        String tb_phim = "Create table phim (maphim integer primary key autoincrement, tenphim text , daodien text , thoiluong integer , theloai text , mota text,linkanh text)";
         sqLiteDatabase.execSQL(tb_phim);
 
         String tb_admin = "Create table admin (tendangnhap text primary key , matkhau text , hoten text)";
@@ -28,8 +28,8 @@ public class DbHepler extends SQLiteOpenHelper {
         String khachhang = "insert into khachhang values('khachhang1','123','Khuất Thị Ngọc Anh')," + "('khachhang2','111','Nguyễn Đăng Sao')";
         sqLiteDatabase.execSQL(khachhang);
 
-        String phim = "insert into phim values(1,'100 Days','Khuất Thị Ngọc Anh',133,'Hành động','Cuộc Đối Đầu Nảy Lửa: Nhóm Siêu Năng Lực Chiến Đấu Để Bảo Vệ Thế Giới Khỏi Hiểm Họa Toàn Cầu.')," +
-                                                "(2,'Gấu Đỏ Biến Hình','Nguyễn Đăng Sao',200,'Hoạt Hình','Phiêu Lưu Hài Hước: Nhóm Bạn Siêu Nhỏ Tìm Kiếm Kỳ Diệu Ẩn Trong Thế Giới Ngầm.')";
+        String phim = "insert into phim values(1,'100 Days','Khuất Thị Ngọc Anh',133,'Hành động','Cuộc Đối Đầu Nảy Lửa: Nhóm Siêu Năng Lực Chiến Đấu Để Bảo Vệ Thế Giới Khỏi Hiểm Họa Toàn Cầu.','https://d1j8r0kxyu9tj8.cloudfront.net/images/1566809317niNpzY2khA3tzMg.jpg')," +
+                                                "(2,'Gấu Đỏ Biến Hình','Nguyễn Đăng Sao',200,'Hoạt Hình','Phiêu Lưu Hài Hước: Nhóm Bạn Siêu Nhỏ Tìm Kiếm Kỳ Diệu Ẩn Trong Thế Giới Ngầm.','https://i.pinimg.com/564x/09/52/06/095206ef08f87da0bd92d5f810765a7e.jpg')";
         sqLiteDatabase.execSQL(phim);
 
     }

@@ -7,25 +7,30 @@ public class PhimModel {
     private int thoiluong;
     private String theloai;
     private String mota;
+    private String linkanh;
 
-    public PhimModel() {
-    }
 
-    public PhimModel(int maphim, String tenphim, String daodien, int thoiluong, String theloai, String mota) {
+    public PhimModel(int maphim, String tenphim, String daodien, int thoiluong, String theloai, String mota, String linkanh) {
         this.maphim = maphim;
         this.tenphim = tenphim;
         this.daodien = daodien;
         this.thoiluong = thoiluong;
         this.theloai = theloai;
         this.mota = mota;
+        this.linkanh = linkanh;
     }
+    public PhimModel( String tenphim, String daodien, int thoiluong, String theloai, String mota,String linkanh) {
 
-    public PhimModel(String tenphim, String daodien, int thoiluong, String theloai, String mota) {
         this.tenphim = tenphim;
         this.daodien = daodien;
         this.thoiluong = thoiluong;
         this.theloai = theloai;
         this.mota = mota;
+        this.linkanh = linkanh;
+
+    }
+
+    public PhimModel() {
     }
 
     public int getMaphim() {
@@ -75,4 +80,13 @@ public class PhimModel {
     public void setMota(String mota) {
         this.mota = mota;
     }
+
+    public String getLinkanh() {
+        return linkanh;
+    }
+
+    public void setLinkanh(String linkanh) {
+        this.linkanh = linkanh;
+    }
 }
+

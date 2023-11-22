@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,7 +55,12 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
     holder.txtThoiluong.setText(String.valueOf(list.get(position).getThoiluong()));
     holder.txtTheloai.setText(list.get(position).getTheloai());
 
+
+
     PhimModel sp = list.get(position);
+
+        // Load image from URL using Picasso
+        Picasso.get().load(sp.getLinkanh()).into(holder.ImvPoster);
 
     holder.btnDelete.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -112,7 +120,7 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-
+        ImageView ImvPoster;
         TextView txtTen, txtDaodien,txtThoiluong,txtTheloai;
         ImageButton btnDelete, btnUpdate;
         public viewHolder(@NonNull View itemView) {
@@ -121,6 +129,7 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
             txtDaodien= itemView.findViewById(R.id.txtDaodien);
             txtThoiluong= itemView.findViewById(R.id.txtThoiluong);
             txtTheloai= itemView.findViewById(R.id.txtTheloai);
+            ImvPoster = itemView.findViewById(R.id.ImvPoster);
             btnDelete = itemView.findViewById(R.id.btnDelete);
             btnUpdate = itemView.findViewById(R.id.btnUpdate);
         }
