@@ -75,6 +75,7 @@ public class PhimDAO {
         return (row > 0);
     }
 
+
    public boolean delete (int maphim){
         SQLiteDatabase db = dbHepler.getWritableDatabase();
         long row = db.delete("phim","maphim=?",new String[] {String.valueOf(maphim)});
