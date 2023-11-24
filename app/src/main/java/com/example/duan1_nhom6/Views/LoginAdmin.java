@@ -44,7 +44,7 @@ public class LoginAdmin extends AppCompatActivity {
                 boolean check = adminDAO.checkloginadmin(tendangnhap,matkhau);
                 if (check){
                     Toast.makeText(LoginAdmin.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginAdmin.this, Home.class));
+                    openHomeActivity("admin");
                 }else {
                     Toast.makeText(LoginAdmin.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
@@ -86,5 +86,11 @@ public class LoginAdmin extends AppCompatActivity {
                 Toast.makeText(LoginAdmin.this, matkhau, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openHomeActivity(String userType) {
+        Intent intent = new Intent(LoginAdmin.this, Home.class);
+        intent.putExtra("userType", userType);
+        startActivity(intent);
     }
 }

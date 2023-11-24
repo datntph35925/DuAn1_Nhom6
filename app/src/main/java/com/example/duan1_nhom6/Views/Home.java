@@ -16,7 +16,17 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //Lấy giá trị có tên là userType từ Intent
+        String userType = getIntent().getStringExtra("userType");
+
+        //Tạo fragment
         Fragment fragment = new frm_Danhsachphim();
+
+        //tạo bundel
+        Bundle bundle = new Bundle();
+        bundle.putString("userType", userType);//Nhét giá trị userType có key là "userType"
+        fragment.setArguments(bundle);//đẩy vào fragment
+
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.container,fragment).commit();
     }

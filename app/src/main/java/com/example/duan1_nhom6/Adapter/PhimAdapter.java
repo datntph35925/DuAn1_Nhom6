@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +13,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.duan1_nhom6.Database.DbHepler;
+import com.example.duan1_nhom6.Model.AdminModel;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -30,7 +35,6 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
     private final  Context context;
 
     private final ArrayList<PhimModel> list;
-
     PhimDAO phimDAO;
 
     public PhimAdapter(Context context, ArrayList<PhimModel> list) {
@@ -38,7 +42,6 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
         this.list = list;
         phimDAO = new PhimDAO(context);
     }
-
     @NonNull
     @Override
     public PhimAdapter.viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,12 +58,13 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
     holder.txtThoiluong.setText(String.valueOf(list.get(position).getThoiluong()));
     holder.txtTheloai.setText(list.get(position).getTheloai());
 
-
+    //Hàm ẩn hiện sửa xóa
+    setVisibility(holder);
 
     PhimModel sp = list.get(position);
 
-        // Load image from URL using Picasso
-        Picasso.get().load(sp.getLinkanh()).into(holder.ImvPoster);
+    // Load image from URL using Picasso
+    Picasso.get().load(sp.getLinkanh()).into(holder.ImvPoster);
 
     holder.btnDelete.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -123,6 +127,8 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
         ImageView ImvPoster;
         TextView txtTen, txtDaodien,txtThoiluong,txtTheloai;
         ImageButton btnDelete, btnUpdate;
+
+        LinearLayout layout_up_de; //ánh xạ layout
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             txtTen = itemView.findViewById(R.id.txtTen);
@@ -132,6 +138,25 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
             ImvPoster = itemView.findViewById(R.id.ImvPoster);
             btnDelete = itemView.findViewById(R.id.btnDelete);
             btnUpdate = itemView.findViewById(R.id.btnUpdate);
+            layout_up_de = itemView.findViewById(R.id.layout_up_de);
+
+
+        }
+    }
+
+    private String userType;
+
+    // Thêm phương thức này để đặt userType(Setter)
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    // Hiển thị layout_up_de nếu là admin, ngược lại ẩn đi
+    public void setVisibility(viewHolder holder) {
+        if ("admin".equals(userType)) {
+            holder.layout_up_de.setVisibility(View.VISIBLE);
+        } else {
+            holder.layout_up_de.setVisibility(View.GONE);
         }
     }
     public void  openDialogUpdate (PhimModel pm){

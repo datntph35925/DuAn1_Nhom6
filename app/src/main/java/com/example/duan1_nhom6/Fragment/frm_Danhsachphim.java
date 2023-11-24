@@ -60,14 +60,31 @@ public class frm_Danhsachphim extends Fragment {
         LinearLayoutManager layout = new LinearLayoutManager(context);
         rccDS.setLayoutManager(layout);
 
+        //Lấy giá trị từ Bundel bằng key "userType"
+        String userType = getArguments().getString("userType");
+
+        // Tạo adapter và thiết lập userType
         adapter = new PhimAdapter(context, list);
+        adapter.setUserType(userType);
+
+        //Ddiều kiện nếu userType là admin thì hiện fltAdd và ngược lại
+        if ("admin".equals(userType)){
+            fltAdd.setVisibility(View.VISIBLE);
+        }else if ("khachhang".equals(userType)){
+            fltAdd.setVisibility(View.GONE);
+        }
         rccDS.setAdapter(adapter);
+
+
 
         fltAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {openDialogAdd();
             }
         });
+
+
+
     }
     public void openDialogAdd(){
         context = getContext();

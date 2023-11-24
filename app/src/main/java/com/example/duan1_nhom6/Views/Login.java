@@ -51,7 +51,7 @@ public class Login extends AppCompatActivity {
                 boolean check = khachHangDAO.checklogin(tendangnhap,matkhau);
                 if (check){
                     Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Login.this, Home.class));
+                    openHomeActivity("khachhang");
                 }else {
                     Toast.makeText(Login.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
@@ -108,5 +108,11 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, matkhau, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openHomeActivity(String userType) {
+        Intent intent = new Intent(Login.this, Home.class);
+        intent.putExtra("userType", userType);
+        startActivity(intent);
     }
 }
