@@ -67,12 +67,12 @@ public class DatVeDAO {
         return (row >0);
     }
 
-    public boolean updateTrangThai(int madatve, String trangthai) {
+    public boolean updateTrangThai(DatVeModel dv){
         SQLiteDatabase db = dbHepler.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("trangthai", trangthai);
+        values.put("trangthai", dv.getTrangthai());
 
-        long row = db.update("datve", values, "madatve=?", new String[]{String.valueOf(madatve)});
+        long row = db.update("datve", values, "madatve=?", new String[]{String.valueOf(dv.getMadatve())});
         return (row > 0);
     }
 //    public boolean update(DatVeModel dv){

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +48,25 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
         holder.txtSoLuong_hd.setText(String.valueOf(list.get(position).getSoluong()));
         holder.txtSoLuongcon_hd.setText(String.valueOf(list.get(position).getSoluongcon()));
         holder.txtTrangThai_hd.setText(list.get(position).getTrangthai());
+        if(list.get(position).getTrangthai().equals("Đã thanh toán")){
+            holder.btnSubmit.setVisibility(View.INVISIBLE);
+        }
 
+        holder.btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datVeDAO = new DatVeDAO(context);
+                DatVeModel datVeModel = list.get(holder.getAdapterPosition());
+                datVeModel.setTrangthai("Đã thanh toán");
+                if(datVeDAO.updateTrangThai(datVeModel)){
+                    Toast.makeText(context, "Xác nhận thanh toán thành công", Toast.LENGTH_SHORT).show();
+                    holder.btnSubmit.setVisibility(View.INVISIBLE);
+                    list.clear();
+                    list.addAll(datVeDAO.selectAll());
+                    notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
@@ -69,13 +88,6 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
             txtSoLuongcon_hd = itemView.findViewById(R.id.txtSoLuongcon_hd);
             txtTrangThai_hd = itemView.findViewById(R.id.txtTrangThai_hd);
             btnSubmit = itemView.findViewById(R.id.btnSubmit);
-
-            btnSubmit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
     }
 }
