@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Views.DatVe">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/Img_poster"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_margin="30dp" />
+
+        <TextView
+            android:id="@+id/txtTen_dv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Tên Phim"
+            android:textColor="#3949AB"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:textColor="@color/black"
+        android:text="Chọn rạp:"
+        android:layout_margin="10dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerRap"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:textColor="@color/black"
+        android:text="Chọn suất chiếu:"
+        android:layout_margin="10dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerSuatChieu"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23dp"
+        android:textColor="@color/black"
+        android:text="Chọn phòng chiếu:"
+        android:layout_margin="10dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerPhongChieu"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        />
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layout_add_de_datve"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/btnAdd_ttdatve"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginRight="2dp"-->
+<!--            android:background="@drawable/khungadd"-->
+<!--            android:src="@drawable/update" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/btnDelete_ttdatve"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/khungadd"-->
+<!--            android:src="@drawable/delete" />-->
+
+<!--    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhập số lượng muốn mua:"
+            android:textColor="@color/black"
+            android:textSize="23dp"/>
+        <EditText
+            android:id="@+id/edt_soluongmua"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bgbtn"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tổng tiền:"
+            android:textSize="19dp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/giave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="19dp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btnThanhToan"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Thanh Toán"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/khungbuton"
+        android:layout_marginTop="20dp"/>
+
+
+
+</LinearLayout>

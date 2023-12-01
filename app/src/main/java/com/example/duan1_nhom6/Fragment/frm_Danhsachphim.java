@@ -2,11 +2,14 @@ package com.example.duan1_nhom6.Fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +56,7 @@ public class frm_Danhsachphim extends Fragment {
 
         rccDS = view.findViewById(R.id.rccDS);
         fltAdd = view.findViewById(R.id.btnAdd);
+        Button btn_HoaDon = view.findViewById(R.id.btn_HoaDon);
         context = getContext();
         phimDAO = new PhimDAO(context);
         list = phimDAO.selectAll();
@@ -83,8 +87,35 @@ public class frm_Danhsachphim extends Fragment {
             }
         });
 
+        btn_HoaDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHoaDonFragment();
+            }
+        });
 
 
+
+    }
+
+    private void openHoaDonFragment() {
+        // Tạo Fragment mới
+        frm_HoaDon frmHoaDon = new frm_HoaDon();
+
+        // Được sử dụng để quản lý Fragment
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+        // Bắt đầu một giao dịch để thêm, xóa hoặc thay thế Fragment
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // Thay thế Fragment hiện tại bằng Fragment mới
+        fragmentTransaction.replace(R.id.container,frmHoaDon);
+
+        // Thêm vào back stack để có thể nhấn nút back để quay lại Fragment trước đó
+        fragmentTransaction.addToBackStack(null);
+
+        // Kết thúc giao dịch
+        fragmentTransaction.commit();
     }
     public void openDialogAdd(){
         context = getContext();

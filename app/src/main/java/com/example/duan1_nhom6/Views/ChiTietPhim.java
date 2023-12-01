@@ -1,11 +1,13 @@
 package com.example.duan1_nhom6.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +46,19 @@ public class ChiTietPhim extends AppCompatActivity {
         txtMota.setText(phimModel.getMota().toString());
 
         Picasso.get().load(phimModel.getLinkanh().toString()).into(txtPoster);
+
+        btnDatve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(ChiTietPhim.this, DatVe.class);
+
+                // Chuyền dữ liệu sang activity DatVe
+                intent1.putExtra("tenPhim", phimModel.getTenphim());
+                intent1.putExtra("linkAnh", phimModel.getLinkanh());
+
+                startActivity(intent1);
+            }
+        });
 
     }
 }
