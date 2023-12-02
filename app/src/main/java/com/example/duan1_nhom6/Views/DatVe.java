@@ -24,7 +24,10 @@ import com.example.duan1_nhom6.Model.DatVeModel;
 import com.example.duan1_nhom6.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class DatVe extends AppCompatActivity {
 
@@ -112,6 +115,12 @@ public class DatVe extends AppCompatActivity {
                 int soluong = Integer.parseInt(edt_soluongmua.getText().toString());
                 double giave = soluong * 50000;
                 String trangthai = "Chưa thanh toán";
+                String ngay = "";
+
+                Date date = new Date();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String dateString = simpleDateFormat.format(date);
+                ngay = dateString;
 
                 // Hiển thị giá vé trên TextView
                 txtgiave.setText("Giá vé: " + giave);
@@ -121,7 +130,7 @@ public class DatVe extends AppCompatActivity {
 
                 if (soluongConLai >= soluong) {
                     // Tạo đối tượng DatVeModel
-                    DatVeModel datVeModel = new DatVeModel(tenphim, tenrap, suatchieu, phongchieu, giave, soluong,trangthai);
+                    DatVeModel datVeModel = new DatVeModel(tenphim, tenrap, suatchieu, phongchieu, giave, soluong,trangthai,ngay);
 
                     // Gọi phương thức insert trong DatVeDAO
                     if (datVeDAO.insert(datVeModel)) {
@@ -131,7 +140,11 @@ public class DatVe extends AppCompatActivity {
                         // Hiển thị thông báo hoặc cập nhật giao diện nếu cần
 
                         Toast.makeText(DatVe.this, "Đặt vé thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DatVe.this, "Ngay1:" + ngay, Toast.LENGTH_SHORT).show();
                         replaceFragment(new frm_HoaDon());
+//                        Intent intent1 = new Intent(DatVe.this, Home.class);
+//                        startActivity(intent1);
+
                     } else {
                         // Xử lý khi insert thất bại
                         Toast.makeText(DatVe.this, "Đặt vé thất bại", Toast.LENGTH_SHORT).show();

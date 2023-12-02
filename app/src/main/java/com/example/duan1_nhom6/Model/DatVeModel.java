@@ -13,13 +13,15 @@ public class DatVeModel {
     private int soluongcon;
     private String trangthai;
 
+    private String ngay;
+
 
     public DatVeModel() {
     }
 
 
 
-    public DatVeModel(String tenphim, String tenrap, String suatchieu, String phongchieu, double giave, int soluong, String trangthai) {
+    public DatVeModel(String tenphim, String tenrap, String suatchieu, String phongchieu, double giave, int soluong, String trangthai, String ngay) {
         this.tenphim = tenphim;
         this.tenrap = tenrap;
         this.suatchieu = suatchieu;
@@ -27,19 +29,15 @@ public class DatVeModel {
         this.giave = giave;
         this.soluong = soluong;
         this.trangthai = trangthai;
-
+        this.ngay = ngay;
     }
 
-    public DatVeModel(int madatve, String tenphim, String tenrap, String suatchieu, String phongchieu, double giave, int soluong, int soluongcon, String trangthai) {
-        this.madatve = madatve;
-        this.tenphim = tenphim;
-        this.tenrap = tenrap;
-        this.suatchieu = suatchieu;
-        this.phongchieu = phongchieu;
-        this.giave = giave;
-        this.soluong = soluong;
-        this.soluongcon = soluongcon;
-        this.trangthai = trangthai;
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
     }
 
     public String getTrangthai() {
