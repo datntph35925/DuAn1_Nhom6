@@ -56,7 +56,7 @@ public class frm_Danhsachphim extends Fragment {
 
         rccDS = view.findViewById(R.id.rccDS);
         fltAdd = view.findViewById(R.id.btnAdd);
-        Button btn_HoaDon = view.findViewById(R.id.btn_HoaDon);
+//        Button btn_HoaDon = view.findViewById(R.id.btn_HoaDon);
         context = getContext();
         phimDAO = new PhimDAO(context);
         list = phimDAO.selectAll();
@@ -87,36 +87,36 @@ public class frm_Danhsachphim extends Fragment {
             }
         });
 
-        btn_HoaDon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openHoaDonFragment();
-            }
-        });
-
-
-
+//        btn_HoaDon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openHoaDonFragment();
+//            }
+//        });
+//
+//
+//
     }
 
-    private void openHoaDonFragment() {
-        // Tạo Fragment mới
-        frm_HoaDon frmHoaDon = new frm_HoaDon();
-
-        // Được sử dụng để quản lý Fragment
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-
-        // Bắt đầu một giao dịch để thêm, xóa hoặc thay thế Fragment
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        // Thay thế Fragment hiện tại bằng Fragment mới
-        fragmentTransaction.replace(R.id.container,frmHoaDon);
-
-        // Thêm vào back stack để có thể nhấn nút back để quay lại Fragment trước đó
-        fragmentTransaction.addToBackStack(null);
-
-        // Kết thúc giao dịch
-        fragmentTransaction.commit();
-    }
+//    private void openHoaDonFragment() {
+//        // Tạo Fragment mới
+//        frm_HoaDon frmHoaDon = new frm_HoaDon();
+//
+//        // Được sử dụng để quản lý Fragment
+//        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//
+//        // Bắt đầu một giao dịch để thêm, xóa hoặc thay thế Fragment
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//        // Thay thế Fragment hiện tại bằng Fragment mới
+//        fragmentTransaction.replace(R.id.container,frmHoaDon);
+//
+//        // Thêm vào back stack để có thể nhấn nút back để quay lại Fragment trước đó
+//        fragmentTransaction.addToBackStack(null);
+//
+//        // Kết thúc giao dịch
+//        fragmentTransaction.commit();
+//    }
     public void openDialogAdd(){
         context = getContext();
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
