@@ -44,7 +44,7 @@ public class ThongKeDao {
 
     public int getDoanhThu(String ngayBatDau, String ngayKetThuc) {//yyyy-mm-dd
         SQLiteDatabase sqLiteDatabase = dbHepler.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM(giave) FROM datve WHERE ngay BETWEEN ? AND ?", new String[] {ngayBatDau, ngayKetThuc});
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT SUM(giave) FROM datve WHERE ngaydat BETWEEN ? AND ?", new String[] {ngayBatDau, ngayKetThuc});
         if(cursor.getCount() != 0) {
             cursor.moveToFirst();
             return cursor.getInt(0);
