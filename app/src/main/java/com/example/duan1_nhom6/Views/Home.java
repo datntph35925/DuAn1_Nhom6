@@ -34,8 +34,9 @@ public class Home extends AppCompatActivity {
                     frm_Danhsachphim v = new frm_Danhsachphim();
                     goiphim(v);
                 } else if (item.getItemId() == R.id.menu_item2) {
+                    String userType = getIntent().getStringExtra("userType");
                     admin a = new admin();
-                    replaceFrg(a);
+                    replaceFrg(a, userType);
                 }
                 return true;
             }
@@ -46,18 +47,21 @@ public class Home extends AppCompatActivity {
     }
 
     public void goiphim(Fragment frg){
-        //Lấy giá trị có tên là userType từ Intent
+        // Lấy giá trị có tên là userType từ Intent
         String userType = getIntent().getStringExtra("userType");
-        //Tạo fragment
+        // Tạo fragment
         frg = new frm_Danhsachphim();
-        //tạo bundel
+        // Tạo bundle
         Bundle bundle = new Bundle();
-        bundle.putString("userType", userType);//Nhét giá trị userType có key là "userType"
-        frg.setArguments(bundle);//đẩy vào fragment
+        bundle.putString("userType", userType); // Nhét giá trị userType có key là "userType"
+        frg.setArguments(bundle); // Đẩy vào fragment
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.flContent, frg).commit();
     }
-    public void replaceFrg(Fragment frg) {
+    public void replaceFrg(Fragment frg , String userType) {
+        Bundle bundle = new Bundle();
+        bundle.putString("userType", userType);
+        frg.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, frg).commit();
     }

@@ -8,7 +8,7 @@ public class DbHepler extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "DuAn1";
     public DbHepler(Context context) {
-        super(context, DB_NAME, null, 34);
+        super(context, DB_NAME, null, 35);
     }
 
     @Override
@@ -31,8 +31,8 @@ public class DbHepler extends SQLiteOpenHelper {
                 "giave REAL NOT NULL," +
                 "soluong INTEGER NOT NULL," +
                 "soluongcon INTEGER NOT NULL DEFAULT 100," +
-                "trangthai TEXT NOT NULL DEFAULT 'Chưa thanh toán'" +
-                ")";
+                "trangthai TEXT NOT NULL DEFAULT 'Chưa thanh toán'," +
+                "ngaydat TEXT NOT NULL )";
         sqLiteDatabase.execSQL(tb_datve);
 
         String admin = "insert into admin values('admin1','1','Ngô Thành Đạt')," + "('admin2','1','Nguyễn Đăng Sao')";
@@ -45,7 +45,7 @@ public class DbHepler extends SQLiteOpenHelper {
                                                 "(2,'Gấu Đỏ Biến Hình','Nguyễn Đăng Sao',200,'Hoạt Hình','Phiêu Lưu Hài Hước: Nhóm Bạn Siêu Nhỏ Tìm Kiếm Kỳ Diệu Ẩn Trong Thế Giới Ngầm.','https://i.pinimg.com/564x/09/52/06/095206ef08f87da0bd92d5f810765a7e.jpg')";
         sqLiteDatabase.execSQL(phim);
 
-        String datve = "insert into datve values(1,'Gấu Đỏ Biến Hình','Rạp Ba Đình - HN','22:00','Phòng 3',50000,100,100,'Chưa thanh toán')";
+        String datve = "insert into datve values(1,'Gấu Đỏ Biến Hình','Rạp Ba Đình - HN','22:00','Phòng 3',50000,100,100,'Chưa thanh toán','20-11-2023')";
         sqLiteDatabase.execSQL(datve);
 
     }

@@ -13,7 +13,7 @@ import com.example.duan1_nhom6.Model.PhimModel;
 
 import java.util.ArrayList;
 
-public class PhimDAO {
+public class   PhimDAO {
 
     private DbHepler dbHepler;
 

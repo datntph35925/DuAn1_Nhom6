@@ -1,6 +1,7 @@
 package com.example.duan1_nhom6.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,9 +49,19 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
         holder.txtSoLuong_hd.setText(String.valueOf(list.get(position).getSoluong()));
         holder.txtSoLuongcon_hd.setText(String.valueOf(list.get(position).getSoluongcon()));
         holder.txtTrangThai_hd.setText(list.get(position).getTrangthai());
-        if(list.get(position).getTrangthai().equals("Đã thanh toán")){
-            holder.btnSubmit.setVisibility(View.INVISIBLE);
+        holder.tvHoaDon.setText(list.get(position).getNgaydat());
+
+
+        if ("admin".equals(userType)) {
+            holder.btnSubmit.setVisibility(View.VISIBLE);
+            if(list.get(position).getTrangthai().equals("Đã thanh toán")){
+                holder.btnSubmit.setVisibility(View.GONE);
+            }
+        } else {
+            holder.btnSubmit.setVisibility(View.GONE);
         }
+
+
 
         holder.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +84,22 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
     public int getItemCount() {
         return list.size();
     }
+    private String userType;
+
+    // Thêm phương thức này để đặt userType(Setter)
+    public void setUserType(String userType) {
+        this.userType = userType;
+        notifyDataSetChanged();
+    }
+
+
+
 
     public class viewHolder extends RecyclerView.ViewHolder {
         TextView txtTenphim_hd,txtTenRap_hd,txtSuatChieu_hd,txtPhongChieu_hd,txtGia_hd,txtSoLuong_hd,txtTrangThai_hd,txtSoLuongcon_hd;
         Button btnSubmit;
+
+        TextView tvHoaDon;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenphim_hd = itemView.findViewById(R.id.txtTenphim_hd);
@@ -88,6 +111,7 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
             txtSoLuongcon_hd = itemView.findViewById(R.id.txtSoLuongcon_hd);
             txtTrangThai_hd = itemView.findViewById(R.id.txtTrangThai_hd);
             btnSubmit = itemView.findViewById(R.id.btnSubmit);
+            tvHoaDon = itemView.findViewById(R.id.txtNgaydat_hd);
         }
     }
 }

@@ -12,25 +12,12 @@ public class DatVeModel {
     private int soluong;
     private int soluongcon;
     private String trangthai;
-
+    private String ngaydat;
 
     public DatVeModel() {
     }
 
-
-
-    public DatVeModel(String tenphim, String tenrap, String suatchieu, String phongchieu, double giave, int soluong, String trangthai) {
-        this.tenphim = tenphim;
-        this.tenrap = tenrap;
-        this.suatchieu = suatchieu;
-        this.phongchieu = phongchieu;
-        this.giave = giave;
-        this.soluong = soluong;
-        this.trangthai = trangthai;
-
-    }
-
-    public DatVeModel(int madatve, String tenphim, String tenrap, String suatchieu, String phongchieu, double giave, int soluong, int soluongcon, String trangthai) {
+    public DatVeModel(int madatve, String tenphim, String tenrap, String suatchieu, String phongchieu, double giave, int soluong, int soluongcon, String trangthai, String ngaydat) {
         this.madatve = madatve;
         this.tenphim = tenphim;
         this.tenrap = tenrap;
@@ -40,14 +27,18 @@ public class DatVeModel {
         this.soluong = soluong;
         this.soluongcon = soluongcon;
         this.trangthai = trangthai;
+        this.ngaydat = ngaydat;
     }
 
-    public String getTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(String trangthai) {
+    public DatVeModel(String tenphim, String tenrap, String suatchieu, String phongchieu, double giave, int soluong, String trangthai, String ngaydat) {
+        this.tenphim = tenphim;
+        this.tenrap = tenrap;
+        this.suatchieu = suatchieu;
+        this.phongchieu = phongchieu;
+        this.giave = giave;
+        this.soluong = soluong;
         this.trangthai = trangthai;
+        this.ngaydat = ngaydat;
     }
 
     public int getMadatve() {
@@ -113,4 +104,21 @@ public class DatVeModel {
     public void setSoluongcon(int soluongcon) {
         this.soluongcon = soluongcon;
     }
+
+    public String getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
+    }
+
+    public String getNgaydat() {
+        return ngaydat;
+    }
+
+    public void setNgaydat(String ngaydat) {
+        this.ngaydat = ngaydat;
+    }
 }
+

@@ -9,9 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.duan1_nhom6.Adapter.HoaDonApdapter;
 import com.example.duan1_nhom6.DAO.DatVeDAO;
@@ -23,6 +26,8 @@ import java.util.ArrayList;
 public class frm_HoaDon extends Fragment {
 
     RecyclerView rccDS;
+
+    Button btnsubmit;
 
     HoaDonApdapter adapter;
     DatVeDAO datVeDAO;
@@ -38,6 +43,7 @@ public class frm_HoaDon extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_frm__hoa_don, container, false);
+
     }
 
     @Override
@@ -48,9 +54,16 @@ public class frm_HoaDon extends Fragment {
         datVeDAO = new DatVeDAO(context);
         list = datVeDAO.selectAll();
         adapter = new HoaDonApdapter(context, list);
+        btnsubmit = view.findViewById(R.id.btnSubmit);
+
 
         LinearLayoutManager layout = new LinearLayoutManager(context);
         rccDS.setLayoutManager(layout);
+        String userType = getArguments().getString("userType");
+
+        adapter = new HoaDonApdapter(context,list);
+        adapter.setUserType(userType);
+
         rccDS.setAdapter(adapter);
     }
 }

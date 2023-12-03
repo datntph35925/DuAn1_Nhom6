@@ -24,7 +24,10 @@ import com.example.duan1_nhom6.Model.DatVeModel;
 import com.example.duan1_nhom6.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class DatVe extends AppCompatActivity {
 
@@ -111,6 +114,11 @@ public class DatVe extends AppCompatActivity {
                 String phongchieu = spinnerPhongChieu.getSelectedItem().toString();
                 int soluong = Integer.parseInt(edt_soluongmua.getText().toString());
                 double giave = soluong * 50000;
+
+                Date date = new Date();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                String dateString = simpleDateFormat.format(date);
+//                hoaDon.setNgayDat(dateString);
                 String trangthai = "Chưa thanh toán";
 
                 // Hiển thị giá vé trên TextView
@@ -121,7 +129,7 @@ public class DatVe extends AppCompatActivity {
 
                 if (soluongConLai >= soluong) {
                     // Tạo đối tượng DatVeModel
-                    DatVeModel datVeModel = new DatVeModel(tenphim, tenrap, suatchieu, phongchieu, giave, soluong,trangthai);
+                    DatVeModel datVeModel = new DatVeModel(tenphim, tenrap, suatchieu, phongchieu, giave, soluong,trangthai,dateString);
 
                     // Gọi phương thức insert trong DatVeDAO
                     if (datVeDAO.insert(datVeModel)) {

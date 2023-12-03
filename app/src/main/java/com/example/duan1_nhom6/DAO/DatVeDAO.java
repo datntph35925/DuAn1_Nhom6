@@ -38,6 +38,7 @@ public class DatVeDAO {
                     dv.setSoluong((cursor.getInt(6)));
                     dv.setSoluongcon((cursor.getInt(7)));
                     dv.setTrangthai((cursor.getString(8)));
+                    dv.setNgaydat((cursor.getString(9)));
 
                     list.add(dv);
                     cursor.moveToNext();
@@ -61,6 +62,7 @@ public class DatVeDAO {
         values.put("soluong",pm.getSoluong());
         values.put("soluongcon",pm.getSoluongcon());
         values.put("trangthai",pm.getTrangthai());
+        values.put("ngaydat",pm.getNgaydat());
 
 
         long row = db.insert("datve",null,values);
