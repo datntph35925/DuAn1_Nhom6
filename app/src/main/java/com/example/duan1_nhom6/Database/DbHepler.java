@@ -8,19 +8,28 @@ public class DbHepler extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "DuAn1";
     public DbHepler(Context context) {
-        super(context, DB_NAME, null, 35);
+        super(context, DB_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String tb_khachhang = "Create table khachhang (tendangnhap text primary key , matkhau text , hoten text )";
+        String tb_khachhang = "Create table khachhang (makh integer primary key autoincrement, tendangnhap text , matkhau text , hoten text, sodu INTEGER DEFAULT 0)";
         sqLiteDatabase.execSQL(tb_khachhang);
 
         String tb_phim = "Create table phim (maphim integer primary key autoincrement, tenphim text , daodien text , thoiluong integer , theloai text , mota text,linkanh text)";
         sqLiteDatabase.execSQL(tb_phim);
 
-        String tb_admin = "Create table admin (tendangnhap text primary key , matkhau text , hoten text)";
+        String tb_admin = "Create table admin (maad integer primary key autoincrement, tendangnhap text , matkhau text , hoten text)";
         sqLiteDatabase.execSQL(tb_admin);
+
+        String tb_theloai = "Create table theloai (matl integer primary key autoincrement, theloai text)";
+        sqLiteDatabase.execSQL(tb_theloai);
+
+        String tb_rap = "Create table rap (matl integer primary key autoincrement, theloai text)";
+        sqLiteDatabase.execSQL(tb_rap);
+
+        String tb_suatchieu = "Create table suatchieu (matl integer primary key autoincrement, theloai text)";
+        sqLiteDatabase.execSQL(tb_suatchieu);
 
         String tb_datve = "CREATE TABLE datve (" +
                 "madatve INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -35,10 +44,10 @@ public class DbHepler extends SQLiteOpenHelper {
                 "ngaydat TEXT NOT NULL )";
         sqLiteDatabase.execSQL(tb_datve);
 
-        String admin = "insert into admin values('admin1','1','Ngô Thành Đạt')," + "('admin2','1','Nguyễn Đăng Sao')";
+        String admin = "insert into admin values(1,'admin1','1','Ngô Thành Đạt')," + "(2,'admin2','1','Nguyễn Đăng Sao')";
         sqLiteDatabase.execSQL(admin);
 
-        String khachhang = "insert into khachhang values('khachhang1','123','Khuất Thị Ngọc Anh')," + "('khachhang2','111','Nguyễn Đăng Sao')";
+        String khachhang = "insert into khachhang values(1,'khachhang1','123','Khuất Thị Ngọc Anh',0)," + "(2,'khachhang2','111','Nguyễn Đăng Sao',0)";
         sqLiteDatabase.execSQL(khachhang);
 
         String phim = "insert into phim values(1,'100 Days','Khuất Thị Ngọc Anh',133,'Hành động','Cuộc Đối Đầu Nảy Lửa: Nhóm Siêu Năng Lực Chiến Đấu Để Bảo Vệ Thế Giới Khỏi Hiểm Họa Toàn Cầu.','https://d1j8r0kxyu9tj8.cloudfront.net/images/1566809317niNpzY2khA3tzMg.jpg')," +
@@ -47,6 +56,15 @@ public class DbHepler extends SQLiteOpenHelper {
 
         String datve = "insert into datve values(1,'Gấu Đỏ Biến Hình','Rạp Ba Đình - HN','22:00','Phòng 3',50000,100,100,'Chưa thanh toán','20-11-2023')";
         sqLiteDatabase.execSQL(datve);
+
+        String theloai = "insert into theloai values(1,'Hoạt Hình')";
+        sqLiteDatabase.execSQL(theloai);
+
+        String rap = "insert into rap values(1,'Rạp Thanh Xuân - HN')";
+        sqLiteDatabase.execSQL(rap);
+
+        String suatchieu = "insert into suatchieu values(1,'22:00')";
+        sqLiteDatabase.execSQL(suatchieu);
 
     }
 
@@ -57,6 +75,9 @@ public class DbHepler extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS phim");
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS admin");
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS datve");
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS theloai");
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS rap");
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS suatchieu");
             onCreate(sqLiteDatabase);
         }
     }
