@@ -24,7 +24,7 @@ import com.example.duan1_nhom6.Views.Login;
 
 
 public class admin extends Fragment {
-    LinearLayout lntHoaDon, lnlDoanhThu, lnlDangXuat;
+    LinearLayout lntHoaDon, lnlDoanhThu, lnlDangXuat,lnl_CRUD;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -42,6 +42,7 @@ public class admin extends Fragment {
         lntHoaDon = view.findViewById(R.id.lnl_HoaDon);
         lnlDoanhThu = view.findViewById(R.id.lnl_doanhthu);
         lnlDangXuat = view.findViewById(R.id.lnl_dangxuat);
+        lnl_CRUD = view.findViewById(R.id.lnl_CRUD);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String username = sharedPreferences.getString("username", "");
@@ -54,6 +55,12 @@ public class admin extends Fragment {
             lnlDoanhThu.setVisibility(View.VISIBLE);
         }else if ("khachhang".equals(userType)){
             lnlDoanhThu.setVisibility(View.GONE);
+        }
+
+        if ("admin".equals(userType)){
+            lnl_CRUD.setVisibility(View.VISIBLE);
+        }else if ("khachhang".equals(userType)){
+            lnl_CRUD.setVisibility(View.GONE);
         }
 
 
@@ -99,6 +106,14 @@ public class admin extends Fragment {
             }
         });
 
+        lnl_CRUD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userType = getArguments().getString("userType");
+                openCrudFragment(userType);
+            }
+        });
+
     }
 
 
@@ -136,6 +151,30 @@ public class admin extends Fragment {
 
         // Thay thế Fragment hiện tại bằng Fragment mới
         fragmentTransaction.replace(R.id.flContent,dthu);
+
+        // Thêm vào back stack để có thể nhấn nút back để quay lại Fragment trước đó
+        fragmentTransaction.addToBackStack(null);
+
+        // Kết thúc giao dịch
+        fragmentTransaction.commit();
+    }
+
+    private void openCrudFragment(String userType) {
+        // Tạo Fragment mới
+        frm_CRUD crud = new frm_CRUD();
+
+        // Tạo bundle để truyền giá trị userType
+        Bundle bundle = new Bundle();
+        bundle.putString("userType", userType);
+        crud.setArguments(bundle);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+        // Bắt đầu một giao dịch để thêm, xóa hoặc thay thế Fragment
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // Thay thế Fragment hiện tại bằng Fragment mới
+        fragmentTransaction.replace(R.id.flContent,crud);
 
         // Thêm vào back stack để có thể nhấn nút back để quay lại Fragment trước đó
         fragmentTransaction.addToBackStack(null);

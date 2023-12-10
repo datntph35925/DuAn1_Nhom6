@@ -50,8 +50,8 @@
         android:hint="Nhập thời lượng: "
         android:paddingLeft="20sp"
         android:textColor="@color/black" />
-    <EditText
-        android:id="@+id/edTheloai_ud"
+    <Spinner
+        android:id="@+id/spTheloai_ud"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center"

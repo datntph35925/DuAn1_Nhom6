@@ -33,12 +33,11 @@ public class DatVeDAO {
                     dv.setTenphim(cursor.getString(1));
                     dv.setTenrap(cursor.getString(2));
                     dv.setSuatchieu(cursor.getString(3));
-                    dv.setPhongchieu(cursor.getString(4));
-                    dv.setGiave(cursor.getDouble(5));
-                    dv.setSoluong((cursor.getInt(6)));
-                    dv.setSoluongcon((cursor.getInt(7)));
-                    dv.setTrangthai((cursor.getString(8)));
-                    dv.setNgaydat((cursor.getString(9)));
+                    dv.setGiave(cursor.getDouble(4));
+                    dv.setSoluong((cursor.getInt(5)));
+                    dv.setSoluongcon((cursor.getInt(6)));
+                    dv.setTrangthai((cursor.getString(7)));
+                    dv.setNgaydat((cursor.getString(8)));
 
                     list.add(dv);
                     cursor.moveToNext();
@@ -57,7 +56,6 @@ public class DatVeDAO {
         values.put("tenphim", pm.getTenphim());
         values.put("tenrap",pm.getTenrap());
         values.put("suatchieu",pm.getSuatchieu());
-        values.put("phongchieu",pm.getPhongchieu());
         values.put("giave",pm.getGiave());
         values.put("soluong",pm.getSoluong());
         values.put("soluongcon",pm.getSoluongcon());

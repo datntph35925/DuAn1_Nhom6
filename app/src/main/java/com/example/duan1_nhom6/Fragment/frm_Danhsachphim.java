@@ -13,20 +13,26 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan1_nhom6.Adapter.PhimAdapter;
 import com.example.duan1_nhom6.DAO.PhimDAO;
+import com.example.duan1_nhom6.DAO.TheLoaiDAO;
 import com.example.duan1_nhom6.Model.PhimModel;
+import com.example.duan1_nhom6.Model.TheLoaiModel;
 import com.example.duan1_nhom6.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -61,8 +67,8 @@ public class frm_Danhsachphim extends Fragment {
         phimDAO = new PhimDAO(context);
         list = phimDAO.selectAll();
 
-        LinearLayoutManager layout = new LinearLayoutManager(context);
-        rccDS.setLayoutManager(layout);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        rccDS.setLayoutManager(layoutManager);
 
         //Lấy giá trị từ Bundel bằng key "userType"
         String userType = getArguments().getString("userType");
@@ -77,6 +83,7 @@ public class frm_Danhsachphim extends Fragment {
         }else if ("khachhang".equals(userType)){
             fltAdd.setVisibility(View.GONE);
         }
+
         rccDS.setAdapter(adapter);
 
 
@@ -87,36 +94,9 @@ public class frm_Danhsachphim extends Fragment {
             }
         });
 
-//        btn_HoaDon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openHoaDonFragment();
-//            }
-//        });
-//
-//
-//
     }
 
-//    private void openHoaDonFragment() {
-//        // Tạo Fragment mới
-//        frm_HoaDon frmHoaDon = new frm_HoaDon();
-//
-//        // Được sử dụng để quản lý Fragment
-//        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//
-//        // Bắt đầu một giao dịch để thêm, xóa hoặc thay thế Fragment
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//        // Thay thế Fragment hiện tại bằng Fragment mới
-//        fragmentTransaction.replace(R.id.container,frmHoaDon);
-//
-//        // Thêm vào back stack để có thể nhấn nút back để quay lại Fragment trước đó
-//        fragmentTransaction.addToBackStack(null);
-//
-//        // Kết thúc giao dịch
-//        fragmentTransaction.commit();
-//    }
+
     public void openDialogAdd(){
         context = getContext();
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -130,10 +110,25 @@ public class frm_Danhsachphim extends Fragment {
         EditText edTen_ad = view.findViewById(R.id.edTen_ad);
         EditText edDaodien_ad = view.findViewById(R.id.edDaodien_ad);
         EditText edThoiluong_ad = view.findViewById(R.id.edThoiluong_ad);
-        EditText edTheloai_ad = view.findViewById(R.id.edTheloai_ad);
+        Spinner spTheloai_ad = view.findViewById(R.id.spTheloai_ad);
         EditText edMota_ad = view.findViewById(R.id.edMota_ad);
         EditText Poster_ad = view.findViewById(R.id.Poster_ad);
         Button btnAdd_ad = view.findViewById(R.id.btnAdd_ad);
+
+        // Khởi tạo TheLoaiDAO và lấy danh sách thể loại từ cơ sở dữ liệu
+        TheLoaiDAO theLoaiDAO = new TheLoaiDAO(context);
+        ArrayList<TheLoaiModel> danhSachTheLoai = theLoaiDAO.layDanhSachTheLoai();
+
+        ArrayList<String> tenTheLoaiList = new ArrayList<>();
+        for (TheLoaiModel theLoaiModel : danhSachTheLoai) {
+            tenTheLoaiList.add(theLoaiModel.getTheloai());
+        }
+
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, tenTheLoaiList);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spTheloai_ad.setAdapter(adapter1);
+
+
 
         btnAdd_ad.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,7 +136,7 @@ public class frm_Danhsachphim extends Fragment {
                 String tenphim = edTen_ad.getText().toString();
                 String daodien = edDaodien_ad.getText().toString();
                 int thoiluong = Integer.parseInt(edThoiluong_ad.getText().toString());
-                String theloai = edTheloai_ad.getText().toString();
+                String theloai = spTheloai_ad.getSelectedItem().toString();
                 String mota = edMota_ad.getText().toString();
                 String linkanh = Poster_ad.getText().toString();
 
@@ -152,10 +147,13 @@ public class frm_Danhsachphim extends Fragment {
                     list.addAll(phimDAO.selectAll());
                     adapter.notifyDataSetChanged();
                     dialog.dismiss();
-                Toast.makeText(context, "Insert succ", Toast.LENGTH_SHORT).show();
-            }
+//                    Toast.makeText(context, "Insert succ", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(view, "Insert success", Snackbar.LENGTH_SHORT).show();
+
+                }
                 else {
-                    Toast.makeText(context, "Insert fail", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "Insert fail", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(view, "Insert fail", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });

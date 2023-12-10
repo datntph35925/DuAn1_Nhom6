@@ -25,10 +25,10 @@ public class DbHepler extends SQLiteOpenHelper {
         String tb_theloai = "Create table theloai (matl integer primary key autoincrement, theloai text)";
         sqLiteDatabase.execSQL(tb_theloai);
 
-        String tb_rap = "Create table rap (matl integer primary key autoincrement, theloai text)";
+        String tb_rap = "Create table rap (marap integer primary key autoincrement, rap text)";
         sqLiteDatabase.execSQL(tb_rap);
 
-        String tb_suatchieu = "Create table suatchieu (matl integer primary key autoincrement, theloai text)";
+        String tb_suatchieu = "Create table suatchieu (masc integer primary key autoincrement, suatchieu text)";
         sqLiteDatabase.execSQL(tb_suatchieu);
 
         String tb_datve = "CREATE TABLE datve (" +
@@ -36,7 +36,6 @@ public class DbHepler extends SQLiteOpenHelper {
                 "tenphim TEXT NOT NULL," +
                 "tenrap TEXT NOT NULL," +
                 "suatchieu DATETIME NOT NULL," +
-                "phongchieu TEXT NOT NULL," +
                 "giave REAL NOT NULL," +
                 "soluong INTEGER NOT NULL," +
                 "soluongcon INTEGER NOT NULL DEFAULT 100," +
@@ -54,7 +53,7 @@ public class DbHepler extends SQLiteOpenHelper {
                                                 "(2,'Gấu Đỏ Biến Hình','Nguyễn Đăng Sao',200,'Hoạt Hình','Phiêu Lưu Hài Hước: Nhóm Bạn Siêu Nhỏ Tìm Kiếm Kỳ Diệu Ẩn Trong Thế Giới Ngầm.','https://i.pinimg.com/564x/09/52/06/095206ef08f87da0bd92d5f810765a7e.jpg')";
         sqLiteDatabase.execSQL(phim);
 
-        String datve = "insert into datve values(1,'Gấu Đỏ Biến Hình','Rạp Ba Đình - HN','22:00','Phòng 3',50000,100,100,'Chưa thanh toán','20-11-2023')";
+        String datve = "insert into datve values(1,'Gấu Đỏ Biến Hình','Rạp Ba Đình - HN','22:00',50000,100,100,'Chưa thanh toán','20-11-2023')";
         sqLiteDatabase.execSQL(datve);
 
         String theloai = "insert into theloai values(1,'Hoạt Hình')";

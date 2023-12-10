@@ -9,16 +9,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.duan1_nhom6.DAO.TheLoaiDAO;
 import com.example.duan1_nhom6.Database.DbHepler;
 import com.example.duan1_nhom6.Model.AdminModel;
+import com.example.duan1_nhom6.Model.TheLoaiModel;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -109,6 +113,7 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
         public void onClick(View view) {
             Intent intent = new Intent(context, ChiTietPhim.class);
             intent.putExtra("id",list.get(holder.getAdapterPosition()).getMaphim());
+            intent.putExtra("userType", userType); // Thêm dòng này
             context.startActivity(intent);
         }
     });
@@ -171,13 +176,29 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
         EditText edTen_ud = view.findViewById(R.id.edTen_ud);
         EditText edDaodien_ud = view.findViewById(R.id.edDaodien_ud);
         EditText edThoiluong_ud = view.findViewById(R.id.edThoiluong_ud);
-        EditText edTheloai_ud = view.findViewById(R.id.edTheloai_ud);
+        Spinner spTheloai_ud = view.findViewById(R.id.spTheloai_ud);
         Button btnUpdate_ud = view.findViewById(R.id.btnUpdate_ud);
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, new ArrayList<>());
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spTheloai_ud.setAdapter(adapter2);
+
+        TheLoaiDAO theLoaiDAO = new TheLoaiDAO(context);
+        ArrayList<TheLoaiModel> danhSachTheLoai = theLoaiDAO.layDanhSachTheLoai();
+
+        ArrayList<String> tenTheLoaiList = new ArrayList<>();
+        for (TheLoaiModel theLoaiModel : danhSachTheLoai) {
+            tenTheLoaiList.add(theLoaiModel.getTheloai());
+        }
+
+        // Đặt dữ liệu vào Adapter
+        adapter2.addAll(tenTheLoaiList);
+        adapter2.notifyDataSetChanged();
 
         edTen_ud.setText(pm.getTenphim());
         edDaodien_ud.setText(pm.getDaodien());
         edThoiluong_ud.setText(String.valueOf(pm.getThoiluong()));
-        edTheloai_ud.setText(pm.getTheloai());
+        spTheloai_ud.setSelection(tenTheLoaiList.indexOf(pm.getTheloai()));
 
         btnUpdate_ud.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,7 +206,7 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
                 pm.setTenphim(edTen_ud.getText().toString());
                 pm.setDaodien(edDaodien_ud.getText().toString());
                 pm.setThoiluong(Integer.parseInt(edThoiluong_ud.getText().toString()));
-                pm.setTheloai(edTheloai_ud.getText().toString());
+                pm.setTheloai(spTheloai_ud.getSelectedItem().toString());
                 if (phimDAO.update(pm)){
                     list.clear();
                     list.addAll(phimDAO.selectAll());

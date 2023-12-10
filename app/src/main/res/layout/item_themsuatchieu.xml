@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bgbtn"
     android:layout_height="wrap_content">
 
     <TextView
@@ -9,22 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50sp"
-        android:text="Thêm Rạp"
+        android:text="Thêm Suất Chiếu"
         android:textColor="#3F51B5"
         android:textSize="25sp"
         android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/edTenRap"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/bgbtn"
-        android:hint="Nhập tên rạp: "
-        android:paddingLeft="20sp"
-        android:textColor="@color/black"
-        />
 
     <EditText
         android:id="@+id/edSuatChieu"
@@ -33,25 +22,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/bgbtn"
-        android:hint="Nhập suất chiếu: "
+        android:hint="Nhập suát chiếu: "
         android:paddingLeft="20sp"
         android:textColor="@color/black"
         />
 
-    <EditText
-        android:id="@+id/edPhongChieu"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/bgbtn"
-        android:hint="Nhập phòng chiếu: "
-        android:paddingLeft="20sp"
-        android:textColor="@color/black"
-        />
 
     <Button
-        android:id="@+id/btnAdd_datve"
+        android:id="@+id/btnAdd_sc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

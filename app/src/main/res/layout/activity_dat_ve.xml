@@ -65,46 +65,6 @@
             android:layout_gravity="center"
             />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="23dp"
-        android:textColor="@color/black"
-        android:text="Chọn phòng chiếu:"
-        android:layout_margin="10dp"/>
-
-    <Spinner
-        android:id="@+id/spinnerPhongChieu"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        />
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/layout_add_de_datve"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/btnAdd_ttdatve"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_marginRight="2dp"-->
-<!--            android:background="@drawable/khungadd"-->
-<!--            android:src="@drawable/update" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/btnDelete_ttdatve"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/khungadd"-->
-<!--            android:src="@drawable/delete" />-->
-
-<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,7 +75,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhập số lượng muốn mua:"
+            android:text="Nhập số lượng vé muốn mua:"
             android:textColor="@color/black"
             android:textSize="23dp"/>
         <EditText

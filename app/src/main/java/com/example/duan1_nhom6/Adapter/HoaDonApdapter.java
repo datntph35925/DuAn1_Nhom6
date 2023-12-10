@@ -44,7 +44,6 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
         holder.txtTenphim_hd.setText(list.get(position).getTenphim());
         holder.txtTenRap_hd.setText(list.get(position).getTenrap());
         holder.txtSuatChieu_hd.setText(list.get(position).getSuatchieu());
-        holder.txtPhongChieu_hd.setText(list.get(position).getPhongchieu());
         holder.txtGia_hd.setText(String.valueOf(list.get(position).getGiave()));
         holder.txtSoLuong_hd.setText(String.valueOf(list.get(position).getSoluong()));
         holder.txtSoLuongcon_hd.setText(String.valueOf(list.get(position).getSoluongcon()));

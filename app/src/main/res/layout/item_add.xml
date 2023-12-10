@@ -51,14 +51,13 @@
         android:hint="Nhập thời lượng: "
         android:paddingLeft="20sp"
         android:textColor="@color/black" />
-    <EditText
-        android:id="@+id/edTheloai_ad"
+    <Spinner
+        android:id="@+id/spTheloai_ad"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/bgbtn"
-        android:hint="Nhập thể loại: "
         android:paddingLeft="20sp"
         android:textColor="@color/black" />
     <EditText
@@ -70,7 +69,7 @@
         android:background="@drawable/bgbtn"
         android:hint="Nhập mô tả: "
         android:paddingLeft="20sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"/>
     <EditText
         android:id="@+id/Poster_ad"
         android:layout_width="250dp"

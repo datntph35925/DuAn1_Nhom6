@@ -20,7 +20,6 @@ public class PhimModel {
         this.linkanh = linkanh;
     }
     public PhimModel( String tenphim, String daodien, int thoiluong, String theloai, String mota,String linkanh) {
-
         this.tenphim = tenphim;
         this.daodien = daodien;
         this.thoiluong = thoiluong;
