@@ -5,17 +5,26 @@
     android:orientation="vertical"
     android:paddingVertical="20dp">
 
+    <ImageView
+        android:id="@+id/btnCloseDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_close_24"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Close Dialog"/>
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="THÊM SẢN PHẨM"
-        android:textStyle="bold"
-        android:textSize="25sp"
         android:layout_gravity="center"
+        android:text="THÊM SẢN PHẨM"
         android:textColor="#3F51B5"
-        android:layout_marginTop="50sp"
-        />
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edTen_ad"
@@ -70,6 +79,7 @@
         android:hint="Nhập mô tả: "
         android:paddingLeft="20sp"
         android:textColor="@color/black"/>
+
     <EditText
         android:id="@+id/Poster_ad"
         android:layout_width="250dp"
@@ -77,9 +87,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/bgbtn"
-        android:hint="Nhập Poster: "
+        android:hint="Nhập Link Poster: "
         android:paddingLeft="20sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/btnAdd_ad"

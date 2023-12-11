@@ -173,6 +173,14 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
         AlertDialog dialog = builder.create();
         dialog.show();
 
+        ImageView btnCloseDialog_up = view.findViewById(R.id.btnCloseDialog_up);
+        btnCloseDialog_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
         EditText edTen_ud = view.findViewById(R.id.edTen_ud);
         EditText edDaodien_ud = view.findViewById(R.id.edDaodien_ud);
         EditText edThoiluong_ud = view.findViewById(R.id.edThoiluong_ud);
@@ -203,21 +211,45 @@ public class PhimAdapter extends RecyclerView.Adapter<PhimAdapter.viewHolder> {
         btnUpdate_ud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pm.setTenphim(edTen_ud.getText().toString());
-                pm.setDaodien(edDaodien_ud.getText().toString());
-                pm.setThoiluong(Integer.parseInt(edThoiluong_ud.getText().toString()));
+                String ten = edTen_ud.getText().toString();
+                String daodien = edDaodien_ud.getText().toString();
+                String thoiluong = edThoiluong_ud.getText().toString();
+
+                if (!validateInputs(ten, daodien, thoiluong)) {
+                    return; // Nếu dữ liệu không hợp lệ, dừng lại
+                }
+
+                pm.setTenphim(ten);
+                pm.setDaodien(daodien);
+                pm.setThoiluong(Integer.parseInt(thoiluong));
                 pm.setTheloai(spTheloai_ud.getSelectedItem().toString());
-                if (phimDAO.update(pm)){
+
+                if (phimDAO.update(pm)) {
                     list.clear();
                     list.addAll(phimDAO.selectAll());
                     notifyDataSetChanged();
                     dialog.dismiss();
                     Toast.makeText(context, "Update Succ", Toast.LENGTH_SHORT).show();
-                }
-                else
+                } else {
                     Toast.makeText(context, "Update fail", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+    }
+
+    private boolean validateInputs(String ten, String daodien, String thoiluong) {
+        if (ten.trim().isEmpty() || daodien.trim().isEmpty() || thoiluong.trim().isEmpty()) {
+            Toast.makeText(context, "Không được để trống", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        try {
+            Integer.parseInt(thoiluong); // Kiểm tra xem thoiluong có phải là số hay không
+            return true;
+        } catch (NumberFormatException e) {
+            Toast.makeText(context, "Thời lượng phải là số", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }

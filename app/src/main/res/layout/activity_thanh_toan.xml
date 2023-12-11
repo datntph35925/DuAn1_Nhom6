@@ -98,7 +98,7 @@
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:background="@drawable/bgbtn"
-        android:text="Xác nhận thanh toán"
+        android:text="Xác nhận Chuyển khoản"
         />
 
 

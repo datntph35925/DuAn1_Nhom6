@@ -44,9 +44,6 @@ public class admin extends Fragment {
         lnlDangXuat = view.findViewById(R.id.lnl_dangxuat);
         lnl_CRUD = view.findViewById(R.id.lnl_CRUD);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String username = sharedPreferences.getString("username", "");
-
         //Lấy giá trị từ Bundel bằng key "userType"
         String userType = getArguments().getString("userType");
 

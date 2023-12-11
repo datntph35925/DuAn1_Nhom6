@@ -64,6 +64,7 @@ public class DatVe extends AppCompatActivity {
          txtgiave = findViewById(R.id.giave);
          edt_soluongmua = findViewById(R.id.edt_soluongmua);
         Button btnThanhToan = findViewById(R.id.btnThanhToan);
+        ImageButton btnBack_dv = findViewById(R.id.btnBack_dv);
 
         // Lấy danh sách rạp và suất chiếu
         RapDAO rapDAO = new RapDAO(this);
@@ -83,6 +84,13 @@ public class DatVe extends AppCompatActivity {
         spinnerSuatChieu.setAdapter(suatChieuAdapter);
 
         datVeDAO = new DatVeDAO(this);
+
+        btnBack_dv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         // Lắng nghe sự kiện thay đổi của EditText số lượng
         edt_soluongmua.addTextChangedListener(new TextWatcher() {

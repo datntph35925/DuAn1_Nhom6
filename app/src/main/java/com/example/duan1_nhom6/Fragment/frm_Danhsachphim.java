@@ -107,6 +107,15 @@ public class frm_Danhsachphim extends Fragment {
         AlertDialog dialog = builder.create();
         dialog.show();
 
+        ImageView btnCloseDialog = view.findViewById(R.id.btnCloseDialog);
+        btnCloseDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
         EditText edTen_ad = view.findViewById(R.id.edTen_ad);
         EditText edDaodien_ad = view.findViewById(R.id.edDaodien_ad);
         EditText edThoiluong_ad = view.findViewById(R.id.edThoiluong_ad);
@@ -135,24 +144,35 @@ public class frm_Danhsachphim extends Fragment {
             public void onClick(View v) {
                 String tenphim = edTen_ad.getText().toString();
                 String daodien = edDaodien_ad.getText().toString();
-                int thoiluong = Integer.parseInt(edThoiluong_ad.getText().toString());
+                String strThoiLuong = edThoiluong_ad.getText().toString();
                 String theloai = spTheloai_ad.getSelectedItem().toString();
                 String mota = edMota_ad.getText().toString();
                 String linkanh = Poster_ad.getText().toString();
 
-                PhimModel phimModel = new PhimModel(tenphim,daodien,thoiluong,theloai,mota,linkanh);
+                // Kiểm tra trường không được để trống
+                if (tenphim.isEmpty() || daodien.isEmpty() || strThoiLuong.isEmpty() || mota.isEmpty() || linkanh.isEmpty()) {
+                    Toast.makeText(context, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-                if (phimDAO.insert(phimModel)){
+                // Kiểm tra edThoiluong_ad có phải là số không
+                int thoiluong;
+                try {
+                    thoiluong = Integer.parseInt(strThoiLuong);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(context, "Thời lượng phải là số", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                PhimModel phimModel = new PhimModel(tenphim, daodien, thoiluong, theloai, mota, linkanh);
+
+                if (phimDAO.insert(phimModel)) {
                     list.clear();
                     list.addAll(phimDAO.selectAll());
                     adapter.notifyDataSetChanged();
                     dialog.dismiss();
-//                    Toast.makeText(context, "Insert succ", Toast.LENGTH_SHORT).show();
                     Snackbar.make(view, "Insert success", Snackbar.LENGTH_SHORT).show();
-
-                }
-                else {
-//                    Toast.makeText(context, "Insert fail", Toast.LENGTH_SHORT).show();
+                } else {
                     Snackbar.make(view, "Insert fail", Snackbar.LENGTH_SHORT).show();
                 }
             }

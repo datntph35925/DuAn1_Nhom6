@@ -104,8 +104,15 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String tendangnhap = edtTendangnhap.getText().toString();
+
+                if (tendangnhap.isEmpty()) {
+                    Toast.makeText(Login.this, "Vui lòng nhập Tên đăng nhập", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 String matkhau = khachHangDAO.forgot(tendangnhap);
                 Toast.makeText(Login.this, matkhau, Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
             }
         });
     }

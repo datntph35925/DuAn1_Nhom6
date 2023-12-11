@@ -2,6 +2,7 @@ package com.example.duan1_nhom6.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,27 +33,41 @@ public class Singup extends AppCompatActivity {
         btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tendangnhap =edt_tendangnhap.getText().toString();
-                String hoten =edt_hoten.getText().toString();
-                String matkhau =edt_matkhau.getText().toString();
-                String xnmatkhau =edt_xnmatkhau.getText().toString();
+                String tendangnhap = edt_tendangnhap.getText().toString();
+                String hoten = edt_hoten.getText().toString();
+                String matkhau = edt_matkhau.getText().toString();
+                String xnmatkhau = edt_xnmatkhau.getText().toString();
 
-                if (tendangnhap.equals("") || hoten.equals("") || matkhau.equals("")){
+                if (tendangnhap.equals("") || hoten.equals("") || matkhau.equals("")) {
                     Toast.makeText(Singup.this, "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (xnmatkhau.equals(matkhau)){
-                    khachHangDAO = new KhachHangDAO(Singup.this);
-                    if (khachHangDAO.singup(tendangnhap,matkhau,hoten)){
-                        Toast.makeText(Singup.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }else {
-                        Toast.makeText(Singup.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(Singup.this, "Xác nhân lại Mật khẩu", Toast.LENGTH_SHORT).show();
+
+                // Kiểm tra độ dài mật khẩu
+                if (matkhau.length() < 8) {
+                    Toast.makeText(Singup.this, "Mật khẩu phải có ít nhất 8 ký tự", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if (xnmatkhau.equals(matkhau)) {
+                    khachHangDAO = new KhachHangDAO(Singup.this);
+                    if (khachHangDAO.singup(tendangnhap, matkhau, hoten)) {
+                        Toast.makeText(Singup.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(Singup.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(Singup.this, "Xác nhận lại Mật khẩu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        });
+
+        tv_dangnhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Singup.this, Login.class));
             }
         });
 

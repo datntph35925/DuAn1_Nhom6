@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +42,7 @@ public class ChiTietPhim extends AppCompatActivity {
         TextView txtMota = findViewById(R.id.txtmota);
         ImageView txtPoster = findViewById(R.id.txtPoster);
         Button btnDatve = findViewById(R.id.btndatve);
+        ImageButton btnBack = findViewById(R.id.btnBack_ctp);
 
 
 
@@ -51,6 +53,14 @@ public class ChiTietPhim extends AppCompatActivity {
         txtMota.setText(phimModel.getMota().toString());
 
         Picasso.get().load(phimModel.getLinkanh().toString()).into(txtPoster);
+
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         btnDatve.setOnClickListener(new View.OnClickListener() {
             @Override

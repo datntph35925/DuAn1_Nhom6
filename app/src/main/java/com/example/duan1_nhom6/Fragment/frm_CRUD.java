@@ -1,5 +1,7 @@
 package com.example.duan1_nhom6.Fragment;
 
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.duan1_nhom6.Adapter.HoaDonApdapter;
@@ -31,6 +35,8 @@ import com.example.duan1_nhom6.Model.TheLoaiModel;
 import com.example.duan1_nhom6.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 
 public class frm_CRUD extends Fragment {
@@ -185,18 +191,24 @@ public class frm_CRUD extends Fragment {
                 // Lấy dữ liệu từ EditText
                 String tenRap = edTenRap.getText().toString().trim();
 
+                // Kiểm tra xem tên rạp có trống không
+                if (tenRap.isEmpty()) {
+                    Toast.makeText(getContext(), "Vui lòng nhập tên rạp", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Thêm rạp và cập nhật Spinner
                 boolean success = rapDAO.themRap(new RapModel(tenRap));
                 if (success) {
                     // Nếu thêm thành công, cập nhật lại dữ liệu cho Spinner
                     loadSpinnerData();
                     Toast.makeText(getContext(), "Thêm Rạp thành công", Toast.LENGTH_SHORT).show();
+
+                    dialog.dismiss();
                 } else {
                     // Xử lý khi thêm không thành công (có thể thông báo lỗi)
                     Toast.makeText(getContext(), "Thêm Rạp thất bại", Toast.LENGTH_SHORT).show();
                 }
-
-                dialog.dismiss();
             }
         });
         dialog.show();
@@ -226,6 +238,8 @@ public class frm_CRUD extends Fragment {
         fragmentTransaction.commit();
     }
 
+    private boolean isTimePickerShown = false;
+
     private void hienThiDialogThemSuatChieu() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         View dialogView = getLayoutInflater().inflate(R.layout.item_themsuatchieu, null);
@@ -233,6 +247,16 @@ public class frm_CRUD extends Fragment {
 
         EditText edSuatChieu = dialogView.findViewById(R.id.edSuatChieu);
         Button btnAdd_sc = dialogView.findViewById(R.id.btnAdd_sc);
+
+        // Sự kiện khi bấm vào EditText
+        edSuatChieu.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus && !isTimePickerShown) {
+                    showTimePickerDialog(edSuatChieu);
+                }
+            }
+        });
 
         AlertDialog dialog = builder.create();
 
@@ -242,21 +266,64 @@ public class frm_CRUD extends Fragment {
                 // Lấy dữ liệu từ EditText
                 String suatChieu = edSuatChieu.getText().toString().trim();
 
-                // Thêm rạp và cập nhật Spinner
+                // Kiểm tra xem suất chiếu có trống không
+                if (suatChieu.isEmpty()) {
+                    Toast.makeText(getContext(), "Vui lòng nhập suất chiếu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Thêm suất chiếu và cập nhật Spinner
                 boolean success = suatChieuDAO.themSuatChieu(new SuatChieuModel(suatChieu));
                 if (success) {
                     // Nếu thêm thành công, cập nhật lại dữ liệu cho Spinner
                     loadSpinnerData();
                     Toast.makeText(getContext(), "Thêm suất chiếu thành công", Toast.LENGTH_SHORT).show();
+
+                    dialog.dismiss();
                 } else {
                     // Xử lý khi thêm không thành công (có thể thông báo lỗi)
                     Toast.makeText(getContext(), "Thêm suất chiếu thất bại", Toast.LENGTH_SHORT).show();
                 }
-
-                dialog.dismiss();
             }
         });
         dialog.show();
+    }
+
+    private void showTimePickerDialog(final EditText editText) {
+        // Lấy thời gian hiện tại
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+
+        // Tạo TimePickerDialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                getContext(),
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        // Định dạng giờ và phút và hiển thị trong EditText
+                        String formattedTime = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
+                        editText.setText(formattedTime);
+                    }
+                },
+                hour,
+                minute,
+                DateFormat.is24HourFormat(getContext())
+        );
+
+        // Bắt đầu sự kiện mất focus để không hiển thị TimePicker nếu không còn focus
+        timePickerDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                isTimePickerShown = false;
+            }
+        });
+
+        // Hiển thị TimePickerDialog
+        timePickerDialog.show();
+
+        // Đang hiển thị TimePicker
+        isTimePickerShown = true;
     }
 
     private void hienThiDialogThemTheLoai() {
@@ -275,18 +342,24 @@ public class frm_CRUD extends Fragment {
                 // Lấy dữ liệu từ EditText
                 String theLoai = edTheLoai.getText().toString().trim();
 
-                // Thêm rạp và cập nhật Spinner
+                // Kiểm tra xem thể loại có trống không
+                if (theLoai.isEmpty()) {
+                    Toast.makeText(getContext(), "Vui lòng nhập thể loại", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Thêm thể loại và cập nhật Spinner
                 boolean success = theLoaiDAO.themTheLoai(new TheLoaiModel(theLoai));
                 if (success) {
                     // Nếu thêm thành công, cập nhật lại dữ liệu cho Spinner
                     loadSpinnerData();
                     Toast.makeText(getContext(), "Thêm thể loại thành công", Toast.LENGTH_SHORT).show();
+
+                    dialog.dismiss();
                 } else {
                     // Xử lý khi thêm không thành công (có thể thông báo lỗi)
                     Toast.makeText(getContext(), "Thêm thể loại thất bại", Toast.LENGTH_SHORT).show();
                 }
-
-                dialog.dismiss();
             }
         });
         dialog.show();
@@ -313,4 +386,6 @@ public class frm_CRUD extends Fragment {
         theLoaiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTheLoai_crud.setAdapter(theLoaiAdapter);
     }
+
+
 }

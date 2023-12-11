@@ -7,6 +7,16 @@
     android:orientation="vertical"
     tools:context=".Views.ChiTietPhim">
 
+    <ImageButton
+        android:id="@+id/btnBack_ctp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/baseline_arrow_back_ios_24" />
+
     <ImageView
         android:id="@+id/txtPoster"
         android:layout_width="393dp"
@@ -149,7 +159,8 @@
         android:backgroundTint="#0098FF"
         android:text="Đặt Vé"
         android:textSize="25dp"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="20dp"/>
+
 
 
 </LinearLayout>

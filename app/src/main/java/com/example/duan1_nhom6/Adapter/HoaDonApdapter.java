@@ -95,7 +95,7 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
 
 
     public class viewHolder extends RecyclerView.ViewHolder {
-        TextView txtTenphim_hd,txtTenRap_hd,txtSuatChieu_hd,txtPhongChieu_hd,txtGia_hd,txtSoLuong_hd,txtTrangThai_hd,txtSoLuongcon_hd;
+        TextView txtTenphim_hd,txtTenRap_hd,txtSuatChieu_hd,txtGia_hd,txtSoLuong_hd,txtTrangThai_hd,txtSoLuongcon_hd;
         Button btnSubmit;
 
         TextView tvHoaDon;
@@ -104,7 +104,6 @@ public class HoaDonApdapter extends RecyclerView.Adapter<HoaDonApdapter.viewHold
             txtTenphim_hd = itemView.findViewById(R.id.txtTenphim_hd);
             txtTenRap_hd = itemView.findViewById(R.id.txtTenRap_hd);
             txtSuatChieu_hd = itemView.findViewById(R.id.txtSuatChieu_hd);
-            txtPhongChieu_hd = itemView.findViewById(R.id.txtPhongChieu_hd);
             txtGia_hd = itemView.findViewById(R.id.txtGia_hd);
             txtSoLuong_hd = itemView.findViewById(R.id.txtSoLuong_hd);
             txtSoLuongcon_hd = itemView.findViewById(R.id.txtSoLuongcon_hd);

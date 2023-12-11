@@ -13,7 +13,7 @@ public class DbHepler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String tb_khachhang = "Create table khachhang (makh integer primary key autoincrement, tendangnhap text , matkhau text , hoten text, sodu INTEGER DEFAULT 0)";
+        String tb_khachhang = "Create table khachhang (makh integer primary key autoincrement, tendangnhap text , matkhau text , hoten text)";
         sqLiteDatabase.execSQL(tb_khachhang);
 
         String tb_phim = "Create table phim (maphim integer primary key autoincrement, tenphim text , daodien text , thoiluong integer , theloai text , mota text,linkanh text)";

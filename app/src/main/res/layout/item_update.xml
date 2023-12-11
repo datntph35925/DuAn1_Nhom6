@@ -5,15 +5,36 @@
     android:orientation="vertical"
     android:paddingVertical="20dp">
 
+    <ImageView
+        android:id="@+id/btnCloseDialog_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_close_24"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Close Dialog"/>
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="50sp"
         android:text="Cập Nhật Phim"
         android:textColor="#3F51B5"
         android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên phim:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="start"
+        android:layout_marginLeft="80dp"
         android:textStyle="bold" />
 
     <EditText
@@ -21,41 +42,71 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@drawable/bgbtn"
-        android:hint="Nhập tên phim: "
         android:paddingLeft="20sp"
         android:textColor="@color/black"
 
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên đạo diễn:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="start"
+        android:layout_marginLeft="80dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edDaodien_ud"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@drawable/bgbtn"
-        android:hint="Nhập  đạo diễn: "
         android:paddingLeft="20sp"
         android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thời lượng phim:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="start"
+        android:layout_marginLeft="80dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edThoiluong_ud"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@drawable/bgbtn"
         android:hint="Nhập thời lượng: "
         android:paddingLeft="20sp"
         android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thể loại phim:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="start"
+        android:layout_marginLeft="80dp"
+        android:textStyle="bold" />
     <Spinner
         android:id="@+id/spTheloai_ud"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:background="@drawable/bgbtn"
         android:hint="Nhập thể loại: "
         android:paddingLeft="20sp"
