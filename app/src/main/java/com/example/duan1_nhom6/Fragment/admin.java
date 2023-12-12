@@ -38,6 +38,8 @@ public class admin extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String username = sharedPreferences.getString("username", "");
 
         lntHoaDon = view.findViewById(R.id.lnl_HoaDon);
         lnlDoanhThu = view.findViewById(R.id.lnl_doanhthu);

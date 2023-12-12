@@ -46,7 +46,7 @@ public class DbHepler extends SQLiteOpenHelper {
         String admin = "insert into admin values(1,'admin1','1','Ngô Thành Đạt')," + "(2,'admin2','1','Nguyễn Đăng Sao')";
         sqLiteDatabase.execSQL(admin);
 
-        String khachhang = "insert into khachhang values(1,'khachhang1','123','Khuất Thị Ngọc Anh',0)," + "(2,'khachhang2','111','Nguyễn Đăng Sao',0)";
+        String khachhang = "insert into khachhang values(1,'khachhang1','123','Khuất Thị Ngọc Anh')," + "(2,'khachhang2','111','Nguyễn Đăng Sao')";
         sqLiteDatabase.execSQL(khachhang);
 
         String phim = "insert into phim values(1,'100 Days','Khuất Thị Ngọc Anh',133,'Hành động','Cuộc Đối Đầu Nảy Lửa: Nhóm Siêu Năng Lực Chiến Đấu Để Bảo Vệ Thế Giới Khỏi Hiểm Họa Toàn Cầu.','https://d1j8r0kxyu9tj8.cloudfront.net/images/1566809317niNpzY2khA3tzMg.jpg')," +

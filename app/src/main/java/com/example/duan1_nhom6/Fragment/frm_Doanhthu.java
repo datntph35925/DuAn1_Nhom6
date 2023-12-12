@@ -36,13 +36,6 @@ public class frm_Doanhthu extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_frm__doanhthu, container, false);
 
-        imgBack = v.findViewById(R.id.img_back_atv_doanh_thu);
-        imgBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         ed_doanh_thu_tu_ngay = v.findViewById(R.id.ed_doanh_thu_tu_ngay);
         ed_doanh_thu_den_ngay = v.findViewById(R.id.ed_doanh_thu_den_ngay);
